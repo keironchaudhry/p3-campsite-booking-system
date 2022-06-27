@@ -13,5 +13,14 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hotel_reservations')
 
 reservations = SHEET.worksheet('reservations')
-data = reservations.get_all_values()
-print(data)
+
+def full_name():
+    """
+    Takes the full name and details of the client and updates spreadsheet
+    """
+    print("Please enter your full name")
+
+    customer_name = input("Enter your full name here: \n")
+    print(f"Thank you, {customer_name}\n")
+
+full_name()
