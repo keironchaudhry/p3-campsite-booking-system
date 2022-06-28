@@ -25,38 +25,50 @@ def full_name():
         customer_name = input("Enter your full name here: \n")
         print(f"You have entered '{customer_name}'\n")
 
-        if validate_full_name(customer_name):
-            update_worksheet_full_name(row, col, value)
+        validate_full_name(customer_name)
 
-    return full_name
+    return customer_name
 
 
-def validate_full_name(customer_name):
+def validate_full_name(name):
     """
     Validates the input entered as the customers full name
     """
 
     regex_name = re.compile(r'^([a-z]+)( [a-z]+)*( [a-z]+)*$', re.IGNORECASE)
 
-    res = regex_name.search(customer_name)
+    res = regex_name.search(name)
 
 
     if res:
         print("Valid input. Updating datasheet...\n")
+        add_customer_name()
     else: print("Invalid. Please enter a valid name.\n")
 
 
-def update_worksheet_full_name(row, col, value):
+def update_worksheet_full_name(reservation_worksheet, row, col, value):
     """
     Transfers the validated customer input to google sheets
     """
-    print("Updating reservation form...\n")
-    reservation_worksheet = SHEET.worksheet("reservations")
     reservation_worksheet.update_cell(row, col, value)
-    print("Reservation updated successfully.\n")
 
+
+def add_customer_name():
+    """
+    Adds the customer name input after validation to google sheets
+    """
+    print("Adding your full name to reservation...")
+
+    reservation_worksheet = SHEET.worksheet("reservations")
+
+    reservation_worksheet.add_cols(1)
+
+    new_column_numer = len(reservation_worksheet.row_values(1)) + 1
+    print("Updating worksheet...")
+    update_worksheet_full_name(reservation_worksheet, 1, new_column_numer, name)
+
+room_number = 1
 
 full_name()
-validate_full_name(customer_name)
 
 
