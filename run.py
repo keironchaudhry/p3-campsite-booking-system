@@ -13,29 +13,50 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hotel_reservations')
 
-reservations = SHEET.worksheet('reservations')
+reservations = GSPREAD_CLIENT.open('hotel_reservations').worksheet('reservations')
 
-def name():
-    """
-    Short test function to get a simple name
-    """
-    print("Please enter your full name:\n")
-    print("Enter name as such: Yoda Murray.\n")
+print("updating worksheet...")
+reservations.update_cell(4, 1, "Mutton")
+print("successfully updated.")
 
-    full_name = input("Enter your full name here:\n")
-    print(f"Thank you, {full_name}.")
+print("updating with input...")
+i = 1
+while reservations.cell(i, 1).value != "":
+    i = i + 1
+reservations.update_cell(i, 1, "Hello")
+print("done.")
 
-    return full_name
 
-def update_worksheet(row, col, value):    
-    """    
-    Function used to make changes to the worksheet with full name    
-    """    
-    reservations.update_cell(row, col, value)
+# def name():
+#     """
+#     Short test function to get a simple name
+#     """
+#     print("Please enter your full name:\n")
+#     print("Enter name as such: Yoda Murray.\n")
 
-value = name()
-update_worksheet(4, 1, value)
+#     full_name = input("Enter your full name here:\n")
+#     print(f"Thank you, {full_name}.")
 
+#     return full_name
+
+# def update_worksheet():    
+#     """    
+#     Function used to make changes to the worksheet with full name    
+#     """    
+
+#     print("Updating worksheet...")
+
+#     i = 1
+
+#     while reservations.cell(i, 1).value != "":
+#         i = i + 1
+    
+#     reservations.update_cell(i, 1, "yoda")
+
+#     print("Worksheet updated successfully.")
+
+
+###############################################################
 
 
 # def full_name():
