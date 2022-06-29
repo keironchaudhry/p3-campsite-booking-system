@@ -15,9 +15,26 @@ SHEET = GSPREAD_CLIENT.open('hotel_reservations')
 
 reservations = SHEET.worksheet('reservations')
 
-reservations.update_cell(4, "Hello world")
+def name():
+    """
+    Short test function to get a simple name
+    """
+    print("Please enter your full name:\n")
+    print("Enter name as such: Yoda Murray.\n")
 
-print(reservations)
+    full_name = input("Enter your full name here:\n")
+    print(f"Thank you, {full_name}.")
+
+    return full_name
+
+def update_worksheet(row, col, value):    
+    """    
+    Function used to make changes to the worksheet with full name    
+    """    
+    reservations.update_cell(row, col, value)
+
+value = name()
+update_worksheet(4, 1, value)
 
 
 
