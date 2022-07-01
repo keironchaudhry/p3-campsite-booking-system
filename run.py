@@ -37,6 +37,7 @@ def full_name():
 def validate_full_name(customer_name):
     """
     Validates the input entered as the customers full name
+    making sure that there are no numbers or symbols used.
     """
 
     regex_name = re.compile(r'^([a-z]+)( [a-z]+)*( [a-z]+)*$', re.IGNORECASE)
@@ -51,26 +52,54 @@ def validate_full_name(customer_name):
 
 def customer_age():
     """
-    Receives input of the age of the customer
+    Receives input of the age of the customer, turns input into
+    an integer and also checks whether the user is over 18 to
+    be able to make a reservation.
     """
     while True:
         try:
             print("How old are you?\n")
-            customer_age = int(input("Please enter your age: \n"))
+            age = int(input("Please enter your age: \n"))
         except ValueError:
             print("Please enter a valid input. Use numbers only.\n")
             continue
         else:
             break
 
-    if customer_age <= 18:
+    if age <= 18:
         print("You must be over 18 to make a reservation.\n")
     else: 
-        print(f"You are {customer_age} years old.\n")
-        return customer_age
+        print(f"You are {age} years old.\n")
+        print("Updating worksheet...\n")
+        return age
 
 
-customer_age()
+def guest_quantity():
+    """
+    Takes in input for the number of guests
+    """
+    while True:
+        try:
+            print("Please indicate the numbers of guests staying.\n")
+            print("Enter the amount as a digit, for example: 2\n")
+            guest_number = int(input("Amount guests staying: \n"))
+        except ValueError:
+            print("Invalid characters. Please use only numeric digits.\n")
+            continue
+        else:
+            break
+
+    if guest_number > 4:
+        print("Only 4 persons maximum per room.\n")
+    else: 
+        print(f"You have entered {guest_number} guests.\n")
+        return guest_number
+
+guest_quantity()
+
+   
+    
+
 
 
 
