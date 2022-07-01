@@ -93,6 +93,7 @@ def guest_quantity():
 
     if guest_number > 4:
         print("Only 4 persons maximum per room.\n")
+
     else: 
         print(f"You have entered {guest_number} guests.\n")
         return guest_number
@@ -110,20 +111,22 @@ def customer_email_address():
     validate_email_address(email)
 
 
+
 def validate_email_address(email):
     """
     Checks whether user email input is valid or invalid.
     """
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 
-    while True:
-        if (re.fullmatch(regex, email)):
-            print("E-mail address is valid.\n")
-            print(f"Your e-mail address is {email}.\n")
-            break
-        else:
-            print("Invalid e-mail, please try again.\n")
-            break
+    
+    if (re.fullmatch(regex, email)):
+        print("E-mail address is valid.\n")
+        print(f"Your e-mail address is {email}.\n")
+        return email
+    
+    else:
+        print("Invalid e-mail, please try again.\n")
+        customer_email_address()
 
 
 customer_email_address()
