@@ -29,6 +29,8 @@ def full_name():
         customer_name = input("Enter your full name here: \n")
         print(f"You have entered '{customer_name}'\n")
 
+        validate_full_name(customer_name)
+
     return customer_name
 
 
@@ -47,8 +49,28 @@ def validate_full_name(customer_name):
         print("Invalid. Please enter a valid name.\n")
 
 
-full_name()
-validate_full_name()
+def customer_age():
+    """
+    Receives input of the age of the customer
+    """
+    while True:
+        try:
+            print("How old are you?\n")
+            customer_age = int(input("Please enter your age: \n"))
+        except ValueError:
+            print("Please enter a valid input. Use numbers only.\n")
+            continue
+        else:
+            break
+
+    if customer_age <= 18:
+        print("You must be over 18 to make a reservation.\n")
+    else: 
+        print(f"You are {customer_age} years old.\n")
+        return customer_age
+
+
+customer_age()
 
 
 
