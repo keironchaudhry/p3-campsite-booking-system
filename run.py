@@ -46,6 +46,7 @@ def validate_full_name(customer_name):
 
     if res:
         print("Valid input. Updating datasheet...\n")
+        customer_age()
     else: 
         print("Invalid. Please enter a valid name.\n")
 
@@ -71,6 +72,7 @@ def customer_age():
     else: 
         print(f"You are {age} years old.\n")
         print("Updating worksheet...\n")
+        guest_quantity()
         return age
 
 
@@ -95,12 +97,15 @@ def guest_quantity():
         print(f"You have entered {guest_number} guests.\n")
         return guest_number
 
-guest_quantity()
 
-   
-    
+def customer_email_address():
+    """
+    For taking in the details of a clients email address
+    """
+    print("Please provide us with an e-mail address for contact purposes.")
+    print("E-mail address must be written as such: email@domain.com")
+    email = input("Your e-mail address: \n")
 
+    print(f"Thank you. Your e-mail address is {email}.\n")
 
-
-
-
+full_name()
