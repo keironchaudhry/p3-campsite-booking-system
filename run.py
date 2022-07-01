@@ -102,10 +102,28 @@ def customer_email_address():
     """
     For taking in the details of a clients email address
     """
-    print("Please provide us with an e-mail address for contact purposes.")
-    print("E-mail address must be written as such: email@domain.com")
+
+    print("Please provide us with an e-mail address for contact purposes.\n")
+    print("E-mail address must be written as such: email@domain.com\n")
     email = input("Your e-mail address: \n")
 
-    print(f"Thank you. Your e-mail address is {email}.\n")
+    validate_email_address(email)
 
-full_name()
+
+def validate_email_address(email):
+    """
+    Checks whether user email input is valid or invalid.
+    """
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+
+    while True:
+        if (re.fullmatch(regex, email)):
+            print("E-mail address is valid.\n")
+            print(f"Your e-mail address is {email}.\n")
+            break
+        else:
+            print("Invalid e-mail, please try again.\n")
+            break
+
+
+customer_email_address()
