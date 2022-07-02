@@ -129,4 +129,15 @@ def validate_email_address(email):
         customer_email_address()
 
 
-customer_email_address()
+def room_type():
+    """
+    Collects input for whether user chooses a 
+    standard twin, double or deluxe twin, double.
+    """
+    print("Please indicate which room type you desire.\n")
+    print("Please write options as such: Standard Twin, Standard Double, Deluxe Twin, Deluxe Double.\n")
+    room_choice = input("Write your room choice here: \n")
+
+    return room_choice
+
+    
