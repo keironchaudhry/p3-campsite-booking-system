@@ -131,32 +131,56 @@ def validate_email_address(email):
 
 def room_type():
     """
-    Collects input for whether user chooses a 
-    standard twin, double or deluxe twin, double.
+    Collects input for whether user chooses standard twin, double or deluxe twin, double.
     """
-    print("Please indicate which room type you desire.\n")
-    print("Please write options as such: Standard Twin, Standard Double, Deluxe Twin, Deluxe Double.\n")
-    room_choice = input("Write your room choice here: \n")
+    while True:
+        try:
+            print("Please indicate which room type you desire by typing in 1, 2, 3 or 4.\n")
+            print("1. Deluxe Double. 2. Deluxe Twin. 3. Standard Double. 4. Standard Twin.\n")
+            room_choice = int(input("Write your room choice here: \n"))
+        except ValueError:
+            print("Please use only numbers.\n")
+            continue
+        else:
+            break
 
-    validate_room_type(room_choice)
-
-
-def validate_room_type(room_choice):
-    """
-    Validates the input given by the user 
-    to make sure there are no errors.
-    """
-
-    regex_room = re.compile(r'^([a-z]+)( [a-z]+)*( [a-z]+)*$', re.IGNORECASE)
-
-    res1 = regex_room.search(room_choice)
-
-    if res1:
-        print(f"Valid input. You picked {room_choice}.\n")
+    if room_choice == 1:
+        print("You have picked the Deluxe Double bed option.\n")
         print("Updating worksheet...\n")
-        return room_choice
+    elif room_choice == 2:
+        print("You have picked the Deluxe Twin bed option.\n")
+        print("Updating worksheet...\n")
+    elif room_choice == 3:
+        print("You have picked the Standard Double bed option.\n")
+        print("Updating worksheet...\n")
+    elif room_choice == 4:
+        print("You have picked the Standard Twin bed option.\n")
+        print("Updating worksheet...\n")
     else:
-        print("Input invalid. Please try again.\n")
+        print("Invalid input. Please enter a valid choice.\n")
         room_type()
 
+
+    #validate_room_type(room_choice)
+
 room_type()
+
+
+
+# def validate_room_type(room_choice):
+#     """
+#     Validates the input given by the user 
+#     to make sure there are no errors.
+#     """
+
+#     regex_room = re.compile(r'^([a-z]+)( [a-z]+)*( [a-z]+)*$', re.IGNORECASE)
+
+#     res1 = regex_room.search(room_choice)
+
+#     if res1:
+#         print(f"Valid input. You picked {room_choice}.\n")
+#         print("Updating worksheet...\n")
+#         return room_choice
+#     else:
+#         print("Input invalid. Please try again.\n")
+#         room_type()
