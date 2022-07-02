@@ -138,6 +138,25 @@ def room_type():
     print("Please write options as such: Standard Twin, Standard Double, Deluxe Twin, Deluxe Double.\n")
     room_choice = input("Write your room choice here: \n")
 
-    return room_choice
+    validate_room_type(room_choice)
 
-    
+
+def validate_room_type(room_choice):
+    """
+    Validates the input given by the user 
+    to make sure there are no errors.
+    """
+
+    regex_room = re.compile(r'^([a-z]+)( [a-z]+)*( [a-z]+)*$', re.IGNORECASE)
+
+    res1 = regex_room.search(room_choice)
+
+    if res1:
+        print(f"Valid input. You picked {room_choice}.\n")
+        print("Updating worksheet...\n")
+        return room_choice
+    else:
+        print("Input invalid. Please try again.\n")
+        room_type()
+
+room_type()
