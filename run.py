@@ -1,5 +1,6 @@
 import re
 import gspread
+import datetime
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -161,26 +162,58 @@ def room_type():
         room_type()
 
 
-    #validate_room_type(room_choice)
+def check_in_date():
+    """
+    Collects input from user for their check-in and check-out date
+    """
+    print("Please use format dd/mm/yyyy for dates\n")
+    input_date_check_in = input("Indicate your check-in date here: \n")
 
-room_type()
+    valid_date = True
+    try:
+        day, month, year = input_date_check_in.split('/')
+        datetime.datetime(int(year), int(month), int(day))
+    except ValueError:
+        valid_date = False
+        print("Invalid input. Please try again.")
+        check_in_date()
+
+    if(valid_date): 
+        print("Valid input date.\n")
+        print("Updating worksheet...\n")
+        return input_date_check_in
+    else:
+        print("Invalid input date. Please try again.\n")
+        check_in_date()
+
+check_in_date()
 
 
 
-# def validate_room_type(room_choice):
+
+# def check_in_date():
 #     """
-#     Validates the input given by the user 
-#     to make sure there are no errors.
+#     Collects input from user for their check-in date.
 #     """
+#     print("Please use format dd/mm/yyyy for dates\n")
+#     check_in_date = input("Indicate your check-in date here: \n")
 
-#     regex_room = re.compile(r'^([a-z]+)( [a-z]+)*( [a-z]+)*$', re.IGNORECASE)
+    
+# def check_out_date():
+#     """
+#     Collects input from user for their check-out date.
+#     """
+#     print("Please use format dd/mm/yyyy for dates\n")
+#     check_out_date = input("Indicate your check-out date here: \n")
 
-#     res1 = regex_room.search(room_choice)
 
-#     if res1:
-#         print(f"Valid input. You picked {room_choice}.\n")
-#         print("Updating worksheet...\n")
-#         return room_choice
-#     else:
-#         print("Input invalid. Please try again.\n")
-#         room_type()
+# def convert_input_to_date(input_date):
+#     """
+#     Converts the string entered by user into a date
+#     """
+#     date_object = datetime.strptime(input_date, "%d/%m/%Y")
+#     return date_object
+
+
+
+
