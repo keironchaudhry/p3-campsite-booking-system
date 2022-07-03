@@ -9,6 +9,13 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
+PRICES = {
+    "Double Deluxe": 250,
+    "Double Twin": 200,
+    "Standard Double": 160,
+    "Standard Twin": 110
+}
+
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
@@ -146,20 +153,25 @@ def room_type():
 
     if room_choice == 1:
         print("You have picked the Deluxe Double bed option.\n")
+        print(f"The price per night is {PRICES['Double Deluxe']}€.\n")
         print("Updating worksheet...\n")
     elif room_choice == 2:
         print("You have picked the Deluxe Twin bed option.\n")
+        print(f"The price per night is {PRICES['Double Twin']}€.\n")
         print("Updating worksheet...\n")
     elif room_choice == 3:
         print("You have picked the Standard Double bed option.\n")
+        print(f"The price per night is {PRICES['Standard Double']}€.\n")
         print("Updating worksheet...\n")
     elif room_choice == 4:
         print("You have picked the Standard Twin bed option.\n")
+        print(f"The price per night is {PRICES['Standard Twin']}€.\n")
         print("Updating worksheet...\n")
     else:
         print("Invalid input. Please enter a valid choice.\n")
         room_type()
 
+room_type()
 
 def check_in_date():
     """
@@ -168,16 +180,16 @@ def check_in_date():
     print("Please use format dd/mm/yyyy for dates\n")
     input_date_check_in = input("Indicate your check-in date here: \n")
 
-    valid_date = True
+    valid_check_in = True
     try:
         day, month, year = input_date_check_in.split('/')
         datetime.datetime(int(year), int(month), int(day))
     except ValueError:
-        valid_date = False
+        valid_check_in = False
         print("Invalid input. Please try again.")
         check_in_date()
 
-    if(valid_date): 
+    if(valid_check_in): 
         print("Valid input date.\n")
         print("Updating worksheet...\n")
         return input_date_check_in
@@ -193,16 +205,16 @@ def check_out_date():
     print("Please use format dd/mm/yyyy for dates\n")
     input_date_check_out = input("Indicate your check-out date here: \n")
 
-    valid_date_1 = True
+    valid_check_out = True
     try:
         day, month, year = input_date_check_out.split('/')
         datetime.datetime(int(year), int(month), int(day))
     except ValueError:
-        valid_date_1 = False
+        valid_check_out = False
         print("Invalid input. Please try again.")
         check_out_date()
 
-    if(valid_date_1): 
+    if(valid_check_out): 
         print("Valid input date.\n")
         print("Updating worksheet...\n")
         return input_date_check_out
@@ -212,33 +224,5 @@ def check_out_date():
 
 check_in_date()
 check_out_date()
-
-
-
-
-# def check_in_date():
-#     """
-#     Collects input from user for their check-in date.
-#     """
-#     print("Please use format dd/mm/yyyy for dates\n")
-#     check_in_date = input("Indicate your check-in date here: \n")
-
-    
-# def check_out_date():
-#     """
-#     Collects input from user for their check-out date.
-#     """
-#     print("Please use format dd/mm/yyyy for dates\n")
-#     check_out_date = input("Indicate your check-out date here: \n")
-
-
-# def convert_input_to_date(input_date):
-#     """
-#     Converts the string entered by user into a date
-#     """
-#     date_object = datetime.strptime(input_date, "%d/%m/%Y")
-#     return date_object
-
-
 
 
