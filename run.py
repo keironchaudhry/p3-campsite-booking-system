@@ -112,7 +112,6 @@ def customer_email_address():
     validate_email_address(email)
 
 
-
 def validate_email_address(email):
     """
     Checks whether user email input is valid or invalid.
@@ -164,7 +163,7 @@ def room_type():
 
 def check_in_date():
     """
-    Collects input from user for their check-in and check-out date
+    Collects input from user for their check-in date
     """
     print("Please use format dd/mm/yyyy for dates\n")
     input_date_check_in = input("Indicate your check-in date here: \n")
@@ -186,7 +185,33 @@ def check_in_date():
         print("Invalid input date. Please try again.\n")
         check_in_date()
 
+
+def check_out_date():
+    """
+    Collects input from user for their check-out date
+    """
+    print("Please use format dd/mm/yyyy for dates\n")
+    input_date_check_out = input("Indicate your check-out date here: \n")
+
+    valid_date_1 = True
+    try:
+        day, month, year = input_date_check_out.split('/')
+        datetime.datetime(int(year), int(month), int(day))
+    except ValueError:
+        valid_date_1 = False
+        print("Invalid input. Please try again.")
+        check_out_date()
+
+    if(valid_date_1): 
+        print("Valid input date.\n")
+        print("Updating worksheet...\n")
+        return input_date_check_out
+    else:
+        print("Invalid input date. Please try again.\n")
+        check_out_date()
+
 check_in_date()
+check_out_date()
 
 
 
