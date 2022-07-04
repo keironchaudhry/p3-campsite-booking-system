@@ -16,12 +16,9 @@ To be updated.
      * [Colour](#colour)
      * [Images](#images)
 * [Features](#features)
-     * ['Game' page](#-game-page)
-     * ['Guide' page](#-guide-page)
-* [Site features](#site-features)
-     * [Header](#header)
-     * [Landing page](#landing-page)
-     * [Guide page](#guide-page)
+    To be updated.
+* [Application features](#application-features)
+    To be updated.
 * [Technologies used](#technologies-used)
 * [Testing](#testing)
 * [Development and deployment](#development-and-deployment)
