@@ -27,7 +27,7 @@ reservations = GSPREAD_CLIENT.open('hotel_reservations').worksheet('reservations
 
 def full_name():
     """
-    Takes the full name and details of the client and updates spreadsheet
+    Takes the full name and details of the client
     """
     while True: 
 
@@ -54,7 +54,6 @@ def validate_full_name(customer_name):
 
     if res:
         print("Valid input. Updating datasheet...\n")
-        customer_age()
     else: 
         print("Invalid. Please enter a valid name.\n")
 
@@ -80,8 +79,8 @@ def customer_age():
     else: 
         print(f"You are {age} years old.\n")
         print("Updating worksheet...\n")
-        guest_quantity()
-        return age
+
+    return age
 
 
 def guest_quantity():
@@ -105,8 +104,8 @@ def guest_quantity():
     else: 
         print(f"You have entered {guest_number} guests.\n")
         customer_email_address()
-        return guest_number
-
+        
+    return guest_number
 
 def customer_email_address():
     """
@@ -130,13 +129,12 @@ def validate_email_address(email):
     if (re.fullmatch(regex, email)):
         print("E-mail address is valid.\n")
         print(f"Your e-mail address is {email}.\n")
-        room_type()
-        return email
     
     else:
         print("Invalid e-mail, please try again.\n")
         customer_email_address()
 
+    return email
 
 def room_type():
     """
@@ -157,25 +155,23 @@ def room_type():
         print("You have picked the Deluxe Double bed option.\n")
         print(f"The price per night is {PRICES['Deluxe Double']}€.\n")
         print("Updating worksheet...\n")
-        check_in_date()
     elif room_choice == 2:
         print("You have picked the Deluxe Twin bed option.\n")
         print(f"The price per night is {PRICES['Deluxe Twin']}€.\n")
         print("Updating worksheet...\n")
-        check_in_date()
     elif room_choice == 3:
         print("You have picked the Standard Double bed option.\n")
         print(f"The price per night is {PRICES['Standard Double']}€.\n")
         print("Updating worksheet...\n")
-        check_in_date()
     elif room_choice == 4:
         print("You have picked the Standard Twin bed option.\n")
         print(f"The price per night is {PRICES['Standard Twin']}€.\n")
         print("Updating worksheet...\n")
-        check_in_date()
     else:
         print("Invalid input. Please enter a valid choice.\n")
         room_type()
+    
+    return room_choice
 
 
 def check_in_date():
@@ -191,17 +187,17 @@ def check_in_date():
         datetime.datetime(int(year), int(month), int(day))
     except ValueError:
         valid_check_in = False
-        print("Invalid input. Please try again.")
+        print("Invalid check-in date. Please try again.")
         check_in_date()
 
     if(valid_check_in): 
-        print("Valid input date.\n")
+        print("Valid check-in date.\n")
         print("Updating worksheet...\n")
-        # return input_date_check_in
-        check_out_date()
     else:
-        print("Invalid input date. Please try again.\n")
+        print("Invalid check-in date. Please try again.\n")
         check_in_date()
+    
+    return input_date_check_in
 
 
 def check_out_date():
@@ -217,17 +213,17 @@ def check_out_date():
         datetime.datetime(int(year), int(month), int(day))
     except ValueError:
         valid_check_out = False
-        print("Invalid input. Please try again.")
+        print("Invalid check-out date. Please try again.")
         check_out_date()
 
     if(valid_check_out): 
-        print("Valid input date.\n")
+        print("Valid check-out date.\n")
         print("Updating worksheet...\n")
-        # return input_date_check_out
-        calculate_total_price(input_date_check_out, input_date_check_in)
     else:
         print("Invalid input date. Please try again.\n")
         check_out_date()
+
+    return input_date_check_out
 
 
 def calculate_total_price(input_date_check_out, input_date_check_in):
@@ -252,5 +248,12 @@ def calculate_total_price(input_date_check_out, input_date_check_in):
         total_price = num_days * {PRICES['Standard Twin']}
         print(f"The total price for your stay is {total_price}€.")
 
-full_name()
+
+def main():
+    """
+    Runs all the previous functions for the program
+    """
+    
+
+main()
 
