@@ -19,10 +19,10 @@ PRICES = {
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('hotel_reservations')
+SHEET = GSPREAD_CLIENT.open('los_santos_hotel')
 
 
-reservations = GSPREAD_CLIENT.open('hotel_reservations').worksheet('reservations')
+reservations = GSPREAD_CLIENT.open('los_santos_hotel').worksheet('reservations')
 
 
 def full_name():
@@ -230,7 +230,7 @@ def check_out_date():
     return input_date_check_out
 
 
-def calculate_total_price(room choice, input_date_check_out, input_date_check_in):
+def calculate_total_price(room_choice, input_date_check_out, input_date_check_in):
     """
     Calculates the total price of the stay based on
     user input in the check-in and -out field.
