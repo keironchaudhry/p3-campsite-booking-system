@@ -37,7 +37,9 @@ def full_name():
         customer_name = input("Enter your full name here: \n")
         print(f"You have entered '{customer_name}'\n")
 
-        validate_full_name(customer_name)
+        if validate_full_name(customer_name):
+            break
+
 
     return customer_name
 
@@ -54,8 +56,10 @@ def validate_full_name(customer_name):
 
     if res:
         print("Valid input. Updating datasheet...\n")
+        return True
     else: 
         print("Invalid. Please enter a valid name.\n")
+        return False
 
 
 def customer_age():
@@ -226,11 +230,14 @@ def check_out_date():
     return input_date_check_out
 
 
-def calculate_total_price(input_date_check_out, input_date_check_in):
+def calculate_total_price(room choice, input_date_check_out, input_date_check_in):
     """
     Calculates the total price of the stay based on
     user input in the check-in and -out field.
     """
+    num_choice = 0
+    total_price = 0
+
     if room_choice == 1:
         num_days = (input_date_check_out - input_date_check_in).days
         total_price = num_days * {PRICES['Deluxe Double']}
@@ -248,12 +255,48 @@ def calculate_total_price(input_date_check_out, input_date_check_in):
         total_price = num_days * {PRICES['Standard Twin']}
         print(f"The total price for your stay is {total_price}€.")
 
+    return num_days, total_price
+
+def confirm_reservation(
+    customer_name,
+    cust_age,
+    no_of_guest,
+    cust_email,
+    type_of_room,
+    date_check_in,
+    date_check_out,num_days, total_price):
+    reservations.row.append([
+        customer_name,
+        cust_age,
+        no_of_guest,
+        cust_email,
+        type_of_room,
+        date_check_in,
+        date_check_out,num_days, total_price
+    ])
 
 def main():
     """
     Runs all the previous functions for the program
     """
-    
+    cust_name = full_name()
+    cust_age = customer_age()
+    no_of_guest = guest_quantity()
+    cust_email = customer_email_address()
+    type_of_room = room_type()
+    date_check_in = check_in_date()
+    date_check_out = check_out_date()
 
-main()
+    num_days, total_price = calculate_total_price(type_of_room, date_check_out, date_check_in)
+    confirm_reservation(
+    customer_name,
+    cust_age,
+    no_of_guest,
+    cust_email,
+    type_of_room,
+    date_check_in,
+    date_check_out,num_days, total_price)
+
+if __name__ == "__main__":
+    main()
 
