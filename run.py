@@ -107,7 +107,6 @@ def guest_quantity():
 
     else: 
         print(f"You have entered {guest_number} guests.\n")
-        customer_email_address()
         
     return guest_number
 
@@ -137,8 +136,9 @@ def validate_email_address(email):
     else:
         print("Invalid e-mail, please try again.\n")
         customer_email_address()
-
+    
     return email
+
 
 def room_type():
     """
