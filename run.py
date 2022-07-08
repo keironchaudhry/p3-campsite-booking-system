@@ -249,7 +249,7 @@ def calculate_total_price(room_choice, check_out_date, check_in_date):
         print(f"The total price for your stay is {total_price}€.")
     elif room_choice == 2:
         num_days = (check_out_date - check_in_date).days
-        total_price = num_days * {PRICES['Deluxe Twin']}
+        total_price = num_days * PRICES['Deluxe Twin']
         print(f"The total price for your stay is {total_price}€.")
     elif room_choice == 3:
         num_days = (check_out_date - check_in_date).days
