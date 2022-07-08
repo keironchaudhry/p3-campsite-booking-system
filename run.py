@@ -271,10 +271,9 @@ def confirm_reservation(
     date_check_in,
     date_check_out,
     num_days, total_price):
-        reservation_items = [cust_name, cust_age, no_of_guest, cust_email, type_of_room, date_check_in, date_check_out, total_price]
-        print(reservation_items)
-        row = reservations.row_values(3)
-        reservations.row_values(3).append(reservation_items)
+    reservation_items = [cust_name, cust_age, no_of_guest, cust_email, type_of_room, date_check_in, date_check_out, total_price]       print(reservation_items)
+    row = reservations.row_values(3)
+    reservations.row_values(3).append(reservation_items)
 
 def main():
     """
