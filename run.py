@@ -1,6 +1,6 @@
 import re
-import gspread
 import datetime
+import gspread
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -80,6 +80,7 @@ def customer_age():
 
     if age <= 18:
         print("You must be over 18 to make a reservation.\n")
+        customer_age()
     else: 
         print(f"You are {age} years old.\n")
         print("Updating worksheet...\n")
@@ -178,7 +179,7 @@ def room_type():
     return room_choice
 
 
-def check_in_date():
+def customer_check_in_date():
     """
     Collects input from user for their check-in date
     """
@@ -187,24 +188,26 @@ def check_in_date():
 
     valid_check_in = True
     try:
-        day, month, year = input_date_check_in.split('/')
-        datetime.datetime(int(year), int(month), int(day))
+        # day, month, year = input_date_check_in.split('/')
+        # datetime.datetime(int(year), int(month), int(day))
+        check_in_date = datetime.datetime.strptime(input_date_check_in, "%d/%m/%Y").date()
+        print("Successfully parsed date.")
     except ValueError:
         valid_check_in = False
         print("Invalid check-in date. Please try again.")
         check_in_date()
 
     if(valid_check_in): 
-        print("Valid check-in date.\n")
+        print(f"Valid check-in date. You have entered {check_in_date}.\n")
         print("Updating worksheet...\n")
     else:
         print("Invalid check-in date. Please try again.\n")
         check_in_date()
     
-    return input_date_check_in
+    return check_in_date
 
 
-def check_out_date():
+def customer_check_out_date():
     """
     Collects input from user for their check-out date
     """
@@ -213,24 +216,26 @@ def check_out_date():
 
     valid_check_out = True
     try:
-        day, month, year = input_date_check_out.split('/')
-        datetime.datetime(int(year), int(month), int(day))
+        # day, month, year = input_date_check_out.split('/')
+        # datetime.datetime(int(year), int(month), int(day))
+        check_out_date = datetime.datetime.strptime(input_date_check_out, "%d/%m/%Y").date()
+        print("Successfully parsed date.")
     except ValueError:
         valid_check_out = False
         print("Invalid check-out date. Please try again.")
         check_out_date()
 
     if(valid_check_out): 
-        print("Valid check-out date.\n")
+        print(f"Valid check-out date. You have entered {check_out_date}.\n")
         print("Updating worksheet...\n")
     else:
         print("Invalid input date. Please try again.\n")
         check_out_date()
 
-    return input_date_check_out
+    return check_out_date
 
 
-def calculate_total_price(room_choice, input_date_check_out, input_date_check_in):
+def calculate_total_price(room_choice, check_out_date, check_in_date):
     """
     Calculates the total price of the stay based on
     user input in the check-in and -out field.
@@ -239,19 +244,19 @@ def calculate_total_price(room_choice, input_date_check_out, input_date_check_in
     total_price = 0
 
     if room_choice == 1:
-        num_days = (input_date_check_out - input_date_check_in).days
+        num_days = (check_out_date - check_in_date).days
         total_price = num_days * {PRICES['Deluxe Double']}
         print(f"The total price for your stay is {total_price}€.")
     elif room_choice == 2:
-        num_days = (input_date_check_out - input_date_check_in).days
+        num_days = (check_out_date - check_in_date).days
         total_price = num_days * {PRICES['Deluxe Twin']}
         print(f"The total price for your stay is {total_price}€.")
     elif room_choice == 3:
-        num_days = (input_date_check_out - input_date_check_in).days
+        num_days = (check_out_date - check_in_date).days
         total_price = num_days * {PRICES['Standard Double']}
         print(f"The total price for your stay is {total_price}€.")
     elif room_choice == 4:
-        num_days = (input_date_check_out - input_date_check_in).days
+        num_days = (check_out_date - check_in_date).days
         total_price = num_days * {PRICES['Standard Twin']}
         print(f"The total price for your stay is {total_price}€.")
 
@@ -284,8 +289,8 @@ def main():
     no_of_guest = guest_quantity()
     cust_email = customer_email_address()
     type_of_room = room_type()
-    date_check_in = check_in_date()
-    date_check_out = check_out_date()
+    date_check_in = customer_check_in_date()
+    date_check_out = customer_check_out_date()
 
     num_days, total_price = calculate_total_price(type_of_room, date_check_out, date_check_in)
     confirm_reservation(
