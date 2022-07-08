@@ -122,6 +122,8 @@ def customer_email_address():
 
     validate_email_address(email)
 
+    return email
+
 
 def validate_email_address(email):
     """
@@ -137,8 +139,6 @@ def validate_email_address(email):
     else:
         print("Invalid e-mail, please try again.\n")
         customer_email_address()
-    
-    return email
 
 
 def room_type():
@@ -245,40 +245,46 @@ def calculate_total_price(room_choice, check_out_date, check_in_date):
 
     if room_choice == 1:
         num_days = (check_out_date - check_in_date).days
-        total_price = num_days * {PRICES['Deluxe Double']}
-        print(f"The total price for your stay is {total_price}€.")
+        total_price = num_days * PRICES['Deluxe Double']
+        print(f"The total price for your stay is {total_price}€.\n")
     elif room_choice == 2:
         num_days = (check_out_date - check_in_date).days
         total_price = num_days * PRICES['Deluxe Twin']
-        print(f"The total price for your stay is {total_price}€.")
+        print(f"The total price for your stay is {total_price}€.\n")
     elif room_choice == 3:
         num_days = (check_out_date - check_in_date).days
-        total_price = num_days * {PRICES['Standard Double']}
-        print(f"The total price for your stay is {total_price}€.")
+        total_price = num_days * PRICES['Standard Double']
+        print(f"The total price for your stay is {total_price}€.\n")
     elif room_choice == 4:
         num_days = (check_out_date - check_in_date).days
-        total_price = num_days * {PRICES['Standard Twin']}
-        print(f"The total price for your stay is {total_price}€.")
+        total_price = num_days * PRICES['Standard Twin']
+        print(f"The total price for your stay is {total_price}€.\n")
 
     return num_days, total_price
 
 def confirm_reservation(
-    customer_name,
+    cust_name,
     cust_age,
     no_of_guest,
     cust_email,
     type_of_room,
     date_check_in,
-    date_check_out,num_days, total_price):
-    reservations.row.append([
-        customer_name,
-        cust_age,
-        no_of_guest,
-        cust_email,
-        type_of_room,
-        date_check_in,
-        date_check_out,num_days, total_price
-    ])
+    date_check_out,
+    num_days, total_price):
+        reservation_items = [cust_name, cust_age, no_of_guest, cust_email, type_of_room, date_check_in, date_check_out, total_price]
+        print(reservation_items)
+        row = reservations.row_values(3)
+        reservations.update_cell(row, col, value).append([
+            cust_name,
+            cust_age,
+            no_of_guest,
+            cust_email,
+            type_of_room,
+            date_check_in,
+            date_check_out, 
+            num_days, 
+            total_price
+        ])
 
 def main():
     """
@@ -291,10 +297,10 @@ def main():
     type_of_room = room_type()
     date_check_in = customer_check_in_date()
     date_check_out = customer_check_out_date()
-
     num_days, total_price = calculate_total_price(type_of_room, date_check_out, date_check_in)
+
     confirm_reservation(
-    customer_name,
+    cust_name,
     cust_age,
     no_of_guest,
     cust_email,
