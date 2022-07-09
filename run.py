@@ -16,12 +16,46 @@ PRICES = {
     "Standard Twin": 110
 }
 
+WELCOME_MESSAGE = """
+Welcome to the Hotel Los Santos Reservation Application. 
+
+Thank you for confiding in our establishment.
+
+1. Make a reservation
+
+2. Room information
+
+3. Contact details.
+
+4. Exit.
+"""
+
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 
 
 reservations = GSPREAD_CLIENT.open('los_santos_hotel').worksheet('reservations')
+
+
+def welcome_page():
+    """
+    The landing page to welcome the user upon initiation of the application
+    """
+    print(WELCOME_MESSAGE)
+    user_menu_choice = int(input("Please enter one of the above options: \n"))
+
+    if user_menu_choice == 1:
+        print(main())
+    
+    elif user_menu_choice == 2:
+        print(room_info())
+    
+    elif user_menu_choice == 3:
+        print(contact_details())
+
+    elif user_menu_choice == 4:
+        exit()
 
 
 def full_name():
@@ -303,5 +337,5 @@ def main():
     date_check_out,num_days, total_price)
 
 if __name__ == "__main__":
-    main()
+    welcome_page()
 
