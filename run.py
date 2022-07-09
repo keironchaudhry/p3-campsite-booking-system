@@ -73,6 +73,19 @@ Available in the room is also a sofa-bed which can fit up to two more people.
 
 """
 
+CONTACT = """
+Los Santos Hotel can be contacted via 0034 987 654 321.
+
+Telephone lines are open between 10AM and 9PM.
+
+Please note that no reservations can be taken directly over phone. All reservations 
+must be carried out via the Los Santos Hotel Reservation Application.
+
+For any further questions, do not hesitate to send us an e-mail at info@lossantoshotel.com.
+
+We thank you for your interest in our establishment.
+"""
+
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
@@ -101,7 +114,10 @@ def welcome_page():
 
 
 def room_info():
-    print("         ------ HOTEL ROOMS INFO ------")
+    """
+    Displays brief information about the amenities available to the client
+    """
+    print("------ LOS SANTOS HOTEL ROOMS INFO ------")
     print(STANDARD_TWIN)
     print(STANDARD_DOUBLE)
     print(DELUXE_TWIN)
@@ -112,6 +128,17 @@ def room_info():
     if room_info_user_choice == 0:
         print(welcome_page())
 
+
+def contact_details():
+    """
+    Displays the contact details for the user to be able to access
+    """
+    print(CONTACT)
+
+    contact_details_user_choice = int(input("Press number key 0 to return to home menu: \n"))
+
+    if contact_details_user_choice == 0:
+        print(welcome_page())
 
 
 def full_name():
@@ -201,6 +228,7 @@ def guest_quantity():
         print("Updating your reservation...\n")
         
     return guest_number
+
 
 def customer_email_address():
     """
@@ -356,6 +384,7 @@ def calculate_total_price(room_choice, check_out_date, check_in_date):
 
     return num_days, total_price
 
+
 def confirm_reservation(
     cust_name,
     cust_age,
@@ -385,6 +414,7 @@ def confirm_reservation(
     worksheet_to_update = reservations
     worksheet_to_update.append_row(reservation_items)
 
+
 def main():
     """
     Runs all the previous functions for the program
@@ -406,6 +436,7 @@ def main():
     type_of_room,
     date_check_in,
     date_check_out,num_days, total_price)
+
 
 if __name__ == "__main__":
     welcome_page()
