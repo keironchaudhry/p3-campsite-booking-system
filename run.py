@@ -277,11 +277,8 @@ def confirm_reservation(
     """
     reservation_items = [cust_name, cust_age, no_of_guest, cust_email, type_of_room, date_check_in, date_check_out, total_price]
     print(reservation_items)
-    resource = {
-        "majorDimension": "ROWS",
-        "values": list
-    }
-    reservations.values().append(spreadsheetId=GSPREAD_CLIENT.open('los_santos_hotel'), range="reservations!A1:H1", body=resource, valueInputOption="USER_ENTERED").execute()
+    worksheet_to_update = reservations
+    worksheet_to_update.append_row(reservation_items)
 
 def main():
     """
