@@ -19,7 +19,6 @@ PRICES = {
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('los_santos_hotel')
 
 
 reservations = GSPREAD_CLIENT.open('los_santos_hotel').worksheet('reservations')
@@ -278,8 +277,11 @@ def confirm_reservation(
     """
     reservation_items = [cust_name, cust_age, no_of_guest, cust_email, type_of_room, date_check_in, date_check_out, total_price]
     print(reservation_items)
-    row = reservations.row_values(3)
-    row.append(reservation_items)
+    resource = {
+        "majorDimension": "ROWS",
+        "values": list
+    }
+    reservations.values().append(spreadsheetId=GSPREAD_CLIENT.open('los_santos_hotel'), range="reservations!A1:H1", body=resource, valueInputOption="USER_ENTERED").execute()
 
 def main():
     """
