@@ -31,10 +31,51 @@ Thank you for confiding in our establishment.
 4. Exit
 """
 
+STANDARD_TWIN = """
+Standard Twin Room.
+
+Our standard twin room features two 110cm individual beds with a standard bathroom with shower and bath.
+
+Available in the room is also a sofa-bed which can fit up to two more people. 
+
+"""
+
+STANDARD_DOUBLE = """
+Standard Double Room.
+
+Our standard double room features a single double bed which is 75” (191 cm) long and 54” (137 cm) wide.
+
+Room also has a bathroom with both a shower and a bath.
+
+Available in the room is also a sofa-bed which can fit up to two more people.
+
+"""
+
+DELUXE_TWIN = """
+Deluxe Twin Room.
+
+Our deluxe twin room features two 130cm individual beds with a plush, luxurious bathroom with a shower and bath.
+
+Room also has access to a balcony off which can be seen a beautiful view of Los Santos and the beach.
+
+Available in the room is also a sofa-bed which can fit up to two more people.
+
+"""
+
+DELUXE_DOUBLE = """
+Deluxe Double Room.
+
+Our deluxe double room features a king size double bed with a plush, luxurious bathroom with a shower and bath.
+
+Room also has access to a balcony off which can be seen a beautiful view of Los Santos and the beach.
+
+Available in the room is also a sofa-bed which can fit up to two more people.
+
+"""
+
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-
 
 reservations = GSPREAD_CLIENT.open('los_santos_hotel').worksheet('reservations')
 
@@ -57,6 +98,20 @@ def welcome_page():
 
     elif user_menu_choice == 4:
         exit()
+
+
+def room_info():
+    print("         ------ HOTEL ROOMS INFO ------")
+    print(STANDARD_TWIN)
+    print(STANDARD_DOUBLE)
+    print(DELUXE_TWIN)
+    print(DELUXE_DOUBLE)
+    
+    room_info_user_choice = int(input("Press number key 0 to return to home menu: \n"))
+
+    if room_info_user_choice == 0:
+        print(welcome_page())
+
 
 
 def full_name():
