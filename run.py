@@ -275,7 +275,7 @@ def confirm_reservation(
     a confirmation of the reservation for the client to see and appends it
     onto a google sheets row for reference.
     """
-    reservation_items = [cust_name, cust_age, no_of_guest, cust_email, type_of_room, date_check_in, date_check_out, total_price]
+    reservation_items = [cust_name, cust_age, no_of_guest, cust_email, type_of_room, total_price]
     print(reservation_items)
     worksheet_to_update = reservations
     worksheet_to_update.append_row(reservation_items)
