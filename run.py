@@ -320,7 +320,12 @@ def confirm_reservation(
     The following is confirmation of your reservation details:
     Name: {cust_name}
     Age: {cust_age}
-    
+    Guest(s): {no_of_guest}
+    Email address: {cust_email}
+    Room: {type_of_room}
+    Check-in date: {date_check_in}
+    Check-out date: {date_check_out}
+    Total price for stay: {total_price}
     """)
     worksheet_to_update = reservations
     worksheet_to_update.append_row(reservation_items)
