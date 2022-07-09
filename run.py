@@ -26,9 +26,9 @@ Thank you for confiding in our establishment.
 
 2. Room information
 
-3. Contact details.
+3. Contact details
 
-4. Exit.
+4. Exit
 """
 
 CREDS = Credentials.from_service_account_file('creds.json')
@@ -89,7 +89,7 @@ def validate_full_name(customer_name):
     res = regex_name.search(customer_name)
 
     if res:
-        print("Valid input. Updating datasheet...\n")
+        print("Updating your reservation... \n")
         return True
     else: 
         print("Invalid. Please enter a valid name.\n")
@@ -117,7 +117,7 @@ def customer_age():
         customer_age()
     else: 
         print(f"You are {age} years old.\n")
-        print("Updating worksheet...\n")
+        print("Updating your reservation...\n")
 
     return age
 
@@ -129,7 +129,8 @@ def guest_quantity():
     while True:
         try:
             print("Please indicate the numbers of guests staying.\n")
-            print("Enter the amount as a digit, for example: 2\n")
+            print("Enter the amount as a digit, for example: 4\n")
+            print("Please bear in mind it is a maximum 4 people per room.\n")
             guest_number = int(input("Amount guests staying: \n"))
         except ValueError:
             print("Invalid characters. Please use only numeric digits.\n")
@@ -142,6 +143,7 @@ def guest_quantity():
 
     else: 
         print(f"You have entered {guest_number} guests.\n")
+        print("Updating your reservation...\n")
         
     return guest_number
 
@@ -169,6 +171,7 @@ def validate_email_address(email):
     if (re.fullmatch(regex, email)):
         print("E-mail address is valid.\n")
         print(f"Your e-mail address is {email}.\n")
+        print("Updating your reservation...\n")
     
     else:
         print("Invalid e-mail, please try again.\n")
@@ -193,19 +196,19 @@ def room_type():
     if room_choice == 1:
         print("You have picked the Deluxe Double bed option.\n")
         print(f"The price per night is {PRICES['Deluxe Double']}€.\n")
-        print("Updating worksheet...\n")
+        print("Updating your reservation...\n")
     elif room_choice == 2:
         print("You have picked the Deluxe Twin bed option.\n")
         print(f"The price per night is {PRICES['Deluxe Twin']}€.\n")
-        print("Updating worksheet...\n")
+        print("Updating your reservation...\n")
     elif room_choice == 3:
         print("You have picked the Standard Double bed option.\n")
         print(f"The price per night is {PRICES['Standard Double']}€.\n")
-        print("Updating worksheet...\n")
+        print("Updating your reservation...\n")
     elif room_choice == 4:
         print("You have picked the Standard Twin bed option.\n")
         print(f"The price per night is {PRICES['Standard Twin']}€.\n")
-        print("Updating worksheet...\n")
+        print("Updating your reservation...\n")
     else:
         print("Invalid input. Please enter a valid choice.\n")
         room_type()
@@ -225,15 +228,14 @@ def customer_check_in_date():
         # day, month, year = input_date_check_in.split('/')
         # datetime.datetime(int(year), int(month), int(day))
         check_in_date = datetime.datetime.strptime(input_date_check_in, "%d/%m/%Y").date()
-        print("Successfully parsed date.")
     except ValueError:
         valid_check_in = False
-        print("Invalid check-in date. Please try again.")
+        print("Invalid check-in date. Please try again.\n")
         check_in_date()
 
     if(valid_check_in): 
-        print(f"Valid check-in date. You have entered {check_in_date}.\n")
-        print("Updating worksheet...\n")
+        print(f"You have entered {check_in_date}.\n")
+        print("Updating your reservation...\n")
     else:
         print("Invalid check-in date. Please try again.\n")
         check_in_date()
@@ -253,15 +255,14 @@ def customer_check_out_date():
         # day, month, year = input_date_check_out.split('/')
         # datetime.datetime(int(year), int(month), int(day))
         check_out_date = datetime.datetime.strptime(input_date_check_out, "%d/%m/%Y").date()
-        print("Successfully parsed date.")
     except ValueError:
         valid_check_out = False
         print("Invalid check-out date. Please try again.")
         check_out_date()
 
     if(valid_check_out): 
-        print(f"Valid check-out date. You have entered {check_out_date}.\n")
-        print("Updating worksheet...\n")
+        print(f"You have entered {check_out_date}.\n")
+        print("Updating your reservation...\n")
     else:
         print("Invalid input date. Please try again.\n")
         check_out_date()
@@ -281,18 +282,22 @@ def calculate_total_price(room_choice, check_out_date, check_in_date):
         num_days = (check_out_date - check_in_date).days
         total_price = num_days * PRICES['Deluxe Double']
         print(f"The total price for your stay is {total_price}€.\n")
+        print("Updating your reservation...\n")
     elif room_choice == 2:
         num_days = (check_out_date - check_in_date).days
         total_price = num_days * PRICES['Deluxe Twin']
         print(f"The total price for your stay is {total_price}€.\n")
+        print("Updating your reservation...\n")
     elif room_choice == 3:
         num_days = (check_out_date - check_in_date).days
         total_price = num_days * PRICES['Standard Double']
         print(f"The total price for your stay is {total_price}€.\n")
+        print("Updating your reservation...\n")
     elif room_choice == 4:
         num_days = (check_out_date - check_in_date).days
         total_price = num_days * PRICES['Standard Twin']
         print(f"The total price for your stay is {total_price}€.\n")
+        print("Updating your reservation...\n")
 
     return num_days, total_price
 
@@ -311,7 +316,12 @@ def confirm_reservation(
     onto a google sheets row for reference.
     """
     reservation_items = [cust_name, cust_age, no_of_guest, cust_email, type_of_room, date_check_in.strftime("%d/%m/%Y"), date_check_out.strftime("%d/%m/%Y"), total_price]
-    print(reservation_items)
+    print(f"""
+    The following is confirmation of your reservation details:
+    Name: {cust_name}
+    Age: {cust_age}
+    
+    """)
     worksheet_to_update = reservations
     worksheet_to_update.append_row(reservation_items)
 
