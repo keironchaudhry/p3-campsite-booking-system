@@ -105,9 +105,9 @@ def main():
     The landing page to welcome the user upon initiation of the application
     """
     while True:
-        print(WELCOME_MESSAGE)
-        user_menu_choice = int(input("Please enter one of the above options: \n"))
         try:
+            print(WELCOME_MESSAGE)
+            user_menu_choice = int(input("Please enter one of the above options: \n"))
             if user_menu_choice == 1:
                 print(program())
     
@@ -126,7 +126,7 @@ def main():
         except ValueError:
             print("Invalid key. Please enter one of the above options.\n")
             continue
-        else: 
+        else:
             break
 
 
@@ -134,16 +134,23 @@ def room_info():
     """
     Displays brief information about the amenities available to the client
     """
-    print("------ LOS SANTOS HOTEL ROOMS INFO ------")
+    print("------ LOS SANTOS HOTEL ROOMS INFO ------")              
     print(STANDARD_TWIN)
     print(STANDARD_DOUBLE)
     print(DELUXE_TWIN)
     print(DELUXE_DOUBLE)
     
-    room_info_user_choice = int(input("Press number key 0 to return to home menu: \n"))
-
-    if room_info_user_choice == 0:
-        print(main())
+    while True:
+        try:
+            room_info_user_choice = int(input("Press number key 0 to return to home menu: \n"))
+            if room_info_user_choice == 0:
+                print(main())
+            elif room_info_user_choice <= 1:
+                print("Invalid key.")
+                continue
+        except ValueError:
+            print("Invalid key.")
+            continue
 
 
 def contact_details():
