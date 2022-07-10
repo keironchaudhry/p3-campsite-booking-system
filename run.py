@@ -104,20 +104,30 @@ def main():
     """
     The landing page to welcome the user upon initiation of the application
     """
-    print(WELCOME_MESSAGE)
-    user_menu_choice = int(input("Please enter one of the above options: \n"))
-
-    if user_menu_choice == 1:
-        print(program())
+    while True:
+        print(WELCOME_MESSAGE)
+        user_menu_choice = int(input("Please enter one of the above options: \n"))
+        try:
+            if user_menu_choice == 1:
+                print(program())
     
-    elif user_menu_choice == 2:
-        print(room_info())
+            elif user_menu_choice == 2:
+                print(room_info())
     
-    elif user_menu_choice == 3:
-        print(contact_details())
+            elif user_menu_choice == 3:
+                print(contact_details())
 
-    elif user_menu_choice == 4:
-        sys.exit()
+            elif user_menu_choice == 4:
+                sys.exit()
+    
+            elif user_menu_choice >= 5:
+                print("Invalid key. Please enter one of the above options.\n")
+                main()
+        except ValueError:
+            print("Invalid key. Please enter one of the above options.\n")
+            continue
+        else: 
+            break
 
 
 def room_info():
@@ -286,22 +296,18 @@ def room_type():
         print("You have picked the Deluxe Double bed option.\n")
         print(f"The price per night is {PRICES['Deluxe Double']}€.\n")
         print("Updating your reservation...\n")
-        room_is = print(ROOM_TYPE["Room type 1"])
     elif room_choice == 2:
         print("You have picked the Deluxe Twin bed option.\n")
         print(f"The price per night is {PRICES['Deluxe Twin']}€.\n")
         print("Updating your reservation...\n")
-        room_is = print(ROOM_TYPE["Room type 2"])
     elif room_choice == 3:
         print("You have picked the Standard Double bed option.\n")
         print(f"The price per night is {PRICES['Standard Double']}€.\n")
         print("Updating your reservation...\n")
-        room_is = print(ROOM_TYPE["Room type 3"])
     elif room_choice == 4:
         print("You have picked the Standard Twin bed option.\n")
         print(f"The price per night is {PRICES['Standard Twin']}€.\n")
         print("Updating your reservation...\n")
-        room_is = print(ROOM_TYPE["Room type 4"])
     else:
         print("Invalid input. Please enter a valid choice.\n")
         room_type()
