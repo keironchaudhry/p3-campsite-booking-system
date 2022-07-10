@@ -117,7 +117,7 @@ def main():
         print(contact_details())
 
     elif user_menu_choice == 4:
-        exit()
+        sys.exit()
 
 
 def room_info():
@@ -162,7 +162,6 @@ def full_name():
 
         if validate_full_name(customer_name):
             break
-
 
     return customer_name
 
@@ -287,27 +286,27 @@ def room_type():
         print("You have picked the Deluxe Double bed option.\n")
         print(f"The price per night is {PRICES['Deluxe Double']}€.\n")
         print("Updating your reservation...\n")
-        room_is = print(f"{PRICES[1]}")
+        room_is = print(ROOM_TYPE["Room type 1"])
     elif room_choice == 2:
         print("You have picked the Deluxe Twin bed option.\n")
         print(f"The price per night is {PRICES['Deluxe Twin']}€.\n")
         print("Updating your reservation...\n")
-        room_is = print(f"{PRICES[1]}")
+        room_is = print(ROOM_TYPE["Room type 2"])
     elif room_choice == 3:
         print("You have picked the Standard Double bed option.\n")
         print(f"The price per night is {PRICES['Standard Double']}€.\n")
         print("Updating your reservation...\n")
-        room_is = print(f"{PRICES[1]}")
+        room_is = print(ROOM_TYPE["Room type 3"])
     elif room_choice == 4:
         print("You have picked the Standard Twin bed option.\n")
         print(f"The price per night is {PRICES['Standard Twin']}€.\n")
         print("Updating your reservation...\n")
-        room_is = print(f"{PRICES[1]}")
+        room_is = print(ROOM_TYPE["Room type 4"])
     else:
         print("Invalid input. Please enter a valid choice.\n")
         room_type()
     
-    return room_is, room_choice
+    return room_choice
 
 
 def customer_check_in_date():
@@ -319,8 +318,6 @@ def customer_check_in_date():
 
     valid_check_in = True
     try:
-        # day, month, year = input_date_check_in.split('/')
-        # datetime.datetime(int(year), int(month), int(day))
         check_in_date = datetime.datetime.strptime(input_date_check_in, "%d/%m/%Y").date()
     except ValueError:
         valid_check_in = False
@@ -346,8 +343,6 @@ def customer_check_out_date():
 
     valid_check_out = True
     try:
-        # day, month, year = input_date_check_out.split('/')
-        # datetime.datetime(int(year), int(month), int(day))
         check_out_date = datetime.datetime.strptime(input_date_check_out, "%d/%m/%Y").date()
     except ValueError:
         valid_check_out = False
@@ -369,7 +364,7 @@ def calculate_total_price(room_choice, check_out_date, check_in_date):
     Calculates the total price of the stay based on
     user input in the check-in and -out field.
     """
-    num_choice = 0
+    num_days = 0
     total_price = 0
 
     if room_choice == 1:
@@ -396,23 +391,23 @@ def calculate_total_price(room_choice, check_out_date, check_in_date):
     return num_days, total_price
 
 
-def confirm_reservation(
-    cust_name,
-    cust_age,
-    no_of_guest,
-    cust_email,
-    type_of_room,
-    date_check_in,
-    date_check_out,
-    num_days, total_price):
+def confirm_reservation(cust_name, cust_age, no_of_guest, cust_email, type_of_room, date_check_in, date_check_out, num_days, total_price):
     """
     Accumulates customer information items, presents it as a list, prints 
     a confirmation of the reservation for the client to see and appends it
     onto a google sheets row for reference.
+    Learned how to append a worksheet via Code Institute, source:
+    https://github.com/Code-Institute-Solutions/love-sandwiches-p4-sourcecode
     """
+
     reservation_items = [cust_name, cust_age, no_of_guest, cust_email, type_of_room, date_check_in.strftime("%d/%m/%Y"), date_check_out.strftime("%d/%m/%Y"), total_price]
-    print(f"""
-    The following is confirmation of your reservation details:
+    worksheet_to_update = reservations
+    worksheet_to_update.append_row(reservation_items)
+    
+    user_information_reservation = f"""
+    The following is confirmation of your reservation details:\n
+    Room numbers are as follows:\n
+    1. Deluxe Double, 2. Deluxe Twin, 3. Standard Double, 4. Standard Twin.\n
     Name: {cust_name}
     Age: {cust_age}
     Guest(s): {no_of_guest}
@@ -420,10 +415,13 @@ def confirm_reservation(
     Room: {type_of_room}
     Check-in date: {date_check_in}
     Check-out date: {date_check_out}
-    Total price for stay: {total_price}
-    """)
-    worksheet_to_update = reservations
-    worksheet_to_update.append_row(reservation_items)
+    Total price for stay: {total_price}.00€\n
+    """
+
+    print(user_information_reservation)
+
+    # worksheet_to_update = reservations
+    # worksheet_to_update.append_row(reservation_items)
 
 
 def program():
@@ -438,15 +436,7 @@ def program():
     date_check_in = customer_check_in_date()
     date_check_out = customer_check_out_date()
     num_days, total_price = calculate_total_price(type_of_room, date_check_out, date_check_in)
-
-    confirm_reservation(
-    cust_name,
-    cust_age,
-    no_of_guest,
-    cust_email,
-    type_of_room,
-    date_check_in,
-    date_check_out, num_days, total_price)
+    confirm_reservation(cust_name, cust_age, no_of_guest, cust_email, type_of_room, date_check_in, date_check_out, num_days, total_price)
 
 
 if __name__ == "__main__":
