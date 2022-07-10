@@ -352,7 +352,7 @@ def customer_check_out_date():
         except ValueError:
             print("Invalid check-out date. Please try again.")
             continue
-        
+
     return check_out_date
 
 
@@ -394,7 +394,7 @@ def confirm_reservation(cust_name, cust_age, no_of_guest, cust_email, type_of_ro
     a confirmation of the reservation for the client to see and appends it
     onto a google sheets row for reference.
     Learned how to append a worksheet via Code Institute, source:
-    https://github.com/Code-Institute-Solutions/love-sandwiches-p4-sourcecode
+    https://github.com/keironchaudhry/love-sandwiches/blob/main/run.py
     """
 
     reservation_items = [cust_name, cust_age, no_of_guest, cust_email, type_of_room, date_check_in.strftime("%d/%m/%Y"), date_check_out.strftime("%d/%m/%Y"), total_price]
