@@ -17,6 +17,13 @@ PRICES = {
     "Standard Twin": 110
 }
 
+ROOM_TYPE = {
+    "Room type 1": "Deluxe Double",
+    "Room type 2": "Deluxe Twin",
+    "Room type 3": "Standard Double",
+    "Room type 4": "Standard Twin",
+}
+
 WELCOME_MESSAGE = """
 Welcome to the Hotel Los Santos Reservation Application. 
 
@@ -93,7 +100,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 reservations = GSPREAD_CLIENT.open('los_santos_hotel').worksheet('reservations')
 
 
-def welcome_page():
+def main():
     """
     The landing page to welcome the user upon initiation of the application
     """
@@ -101,7 +108,7 @@ def welcome_page():
     user_menu_choice = int(input("Please enter one of the above options: \n"))
 
     if user_menu_choice == 1:
-        print(main())
+        print(program())
     
     elif user_menu_choice == 2:
         print(room_info())
@@ -126,7 +133,7 @@ def room_info():
     room_info_user_choice = int(input("Press number key 0 to return to home menu: \n"))
 
     if room_info_user_choice == 0:
-        print(welcome_page())
+        print(main())
 
 
 def contact_details():
@@ -138,7 +145,7 @@ def contact_details():
     contact_details_user_choice = int(input("Press number key 0 to return to home menu: \n"))
 
     if contact_details_user_choice == 0:
-        print(welcome_page())
+        print(main())
 
 
 def full_name():
@@ -280,23 +287,27 @@ def room_type():
         print("You have picked the Deluxe Double bed option.\n")
         print(f"The price per night is {PRICES['Deluxe Double']}€.\n")
         print("Updating your reservation...\n")
+        room_is = print(f"{PRICES[1]}")
     elif room_choice == 2:
         print("You have picked the Deluxe Twin bed option.\n")
         print(f"The price per night is {PRICES['Deluxe Twin']}€.\n")
         print("Updating your reservation...\n")
+        room_is = print(f"{PRICES[1]}")
     elif room_choice == 3:
         print("You have picked the Standard Double bed option.\n")
         print(f"The price per night is {PRICES['Standard Double']}€.\n")
         print("Updating your reservation...\n")
+        room_is = print(f"{PRICES[1]}")
     elif room_choice == 4:
         print("You have picked the Standard Twin bed option.\n")
         print(f"The price per night is {PRICES['Standard Twin']}€.\n")
         print("Updating your reservation...\n")
+        room_is = print(f"{PRICES[1]}")
     else:
         print("Invalid input. Please enter a valid choice.\n")
         room_type()
     
-    return room_choice
+    return room_is, room_choice
 
 
 def customer_check_in_date():
@@ -415,7 +426,7 @@ def confirm_reservation(
     worksheet_to_update.append_row(reservation_items)
 
 
-def main():
+def program():
     """
     Runs all the previous functions for the program
     """
@@ -435,9 +446,9 @@ def main():
     cust_email,
     type_of_room,
     date_check_in,
-    date_check_out,num_days, total_price)
+    date_check_out, num_days, total_price)
 
 
 if __name__ == "__main__":
-    welcome_page()
+    main()
 
