@@ -333,12 +333,6 @@ def customer_check_in_date():
             print("Invalid check-in date. Please try again.\n")
             continue
 
-    # if(valid_check_in): 
-    #     print(f"You have entered {check_in_date}.\n")
-    #     print("Updating your reservation...\n")
-    # else:
-    #     print("Invalid check-in date. Please try again.\n")
-    
     return check_in_date
 
 
@@ -346,24 +340,19 @@ def customer_check_out_date():
     """
     Collects input from user for their check-out date
     """
-    print("Please use format dd/mm/yyyy for dates\n")
-    input_date_check_out = input("Indicate your check-out date here: \n")
+    while True:
+        print("Please use format dd/mm/yyyy for dates\n")
+        input_date_check_out = input("Indicate your check-out date here: \n")
 
-    valid_check_out = True
-    try:
-        check_out_date = datetime.datetime.strptime(input_date_check_out, "%d/%m/%Y").date()
-    except ValueError:
-        valid_check_out = False
-        print("Invalid check-out date. Please try again.")
-        customer_check_out_date()
-
-    if(valid_check_out): 
-        print(f"You have entered {check_out_date}.\n")
-        print("Updating your reservation...\n")
-    else:
-        print("Invalid input date. Please try again.\n")
-        customer_check_out_date()
-
+        try:
+            check_out_date = datetime.datetime.strptime(input_date_check_out, "%d/%m/%Y").date()
+            print(f"You have entered {check_out_date}.\n")
+            print("Updating your reservation...\n")
+            break
+        except ValueError:
+            print("Invalid check-out date. Please try again.")
+            continue
+        
     return check_out_date
 
 
