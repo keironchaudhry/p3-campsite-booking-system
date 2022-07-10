@@ -3,6 +3,7 @@ import datetime
 import sys
 import gspread
 from google.oauth2.service_account import Credentials
+from termcolor import colored
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -106,7 +107,7 @@ def main():
     """
     while True:
         try:
-            print(WELCOME_MESSAGE)
+            print(colored((WELCOME_MESSAGE), 'cyan'))
             user_menu_choice = int(input("Please enter one of the above options: \n"))
             if user_menu_choice == 1:
                 print(program())
@@ -121,10 +122,10 @@ def main():
                 sys.exit()
     
             elif user_menu_choice >= 5:
-                print("Invalid key. Please enter one of the above options.\n")
+                print(colored (("Invalid key. Please enter one of the above options.\n"), 'red'))
                 main()
         except ValueError:
-            print("Invalid key. Please enter one of the above options.\n")
+            print(colored (("Invalid key. Please enter one of the above options.\n"), 'red'))
             continue
         else:
             break
@@ -134,11 +135,11 @@ def room_info():
     """
     Displays brief information about the amenities available to the client
     """
-    print("------ LOS SANTOS HOTEL ROOMS INFO ------")              
-    print(STANDARD_TWIN)
-    print(STANDARD_DOUBLE)
-    print(DELUXE_TWIN)
-    print(DELUXE_DOUBLE)
+    print(colored (("------ LOS SANTOS HOTEL ROOMS INFO ------"), 'cyan'))             
+    print(colored ((STANDARD_TWIN), 'cyan'))
+    print(colored ((STANDARD_DOUBLE), 'cyan'))
+    print(colored ((DELUXE_TWIN), 'cyan'))
+    print(colored ((DELUXE_DOUBLE), 'cyan'))
     
     while True:
         try:
@@ -146,10 +147,10 @@ def room_info():
             if room_info_user_choice == 0:
                 print(main())
             elif room_info_user_choice <= 1:
-                print("Invalid key.")
+                print(colored (("Invalid key."), 'red'))
                 continue
         except ValueError:
-            print("Invalid key.")
+            print(colored (("Invalid key."), 'red'))
             continue
 
 
@@ -157,7 +158,7 @@ def contact_details():
     """
     Displays the contact details for the user to be able to access
     """
-    print(CONTACT)
+    print(colored ((CONTACT), 'cyan'))
 
     while True:
         try:
@@ -165,10 +166,10 @@ def contact_details():
             if contact_details_user_choice == 0:
                 print(main())
             elif contact_details_user_choice <= 1:
-                print("Invalid key.")
+                print(colored (("Invalid key."), 'red'))
                 continue
         except ValueError:
-            print("Invalid key.")
+            print(colored (("Invalid key."), 'red'))
             continue
 
 
@@ -178,11 +179,11 @@ def full_name():
     """
     while True: 
 
-        print("Please enter your full name\n")
-        print("For example: Tarik Khan \n")
+        print(colored (("Please enter your full name\n"), 'cyan'))
+        print(colored (("For example: Tarik Khan \n"), 'cyan'))
 
         customer_name = input("Enter your full name here: \n")
-        print(f"You have entered '{customer_name}'\n")
+        print(colored ((f"You have entered '{customer_name}'\n"), 'cyan'))
 
         if validate_full_name(customer_name):
             break
@@ -201,10 +202,10 @@ def validate_full_name(customer_name):
     res = regex_name.search(customer_name)
 
     if res:
-        print("Updating your reservation... \n")
+        print(colored (("Updating your reservation... \n"), 'cyan'))
         return True
     else: 
-        print("Invalid. Please enter a valid name.\n")
+        print(colored (("Invalid. Please enter a valid name.\n"), 'red'))
         return False
 
 
@@ -216,20 +217,20 @@ def customer_age():
     """
     while True:
         try:
-            print("How old are you?\n")
+            print(colored (("How old are you?\n"), 'cyan'))
             age = int(input("Please enter your age: \n"))
         except ValueError:
-            print("Please enter a valid input. Use numbers only.\n")
+            print(colored (("Please enter a valid input. Use numbers only.\n"), 'red'))
             continue
         else:
             break
 
     if age <= 18:
-        print("You must be over 18 to make a reservation.\n")
+        print(colored (("You must be over 18 to make a reservation.\n"), 'red'))
         customer_age()
     else: 
-        print(f"You are {age} years old.\n")
-        print("Updating your reservation...\n")
+        print(colored ((f"You are {age} years old.\n"), 'cyan'))
+        print(colored (("Updating your reservation...\n"), 'cyan'))
 
     return age
 
@@ -240,23 +241,23 @@ def guest_quantity():
     """
     while True:
         try:
-            print("Please indicate the numbers of guests staying.\n")
-            print("Enter the amount as a digit, for example: 4\n")
-            print("Please bear in mind it is a maximum 4 people per room.\n")
+            print(colored (("Please indicate the numbers of guests staying.\n"), 'cyan'))
+            print(colored (("Enter the amount as a digit, for example: 4\n"), 'cyan'))
+            print(colored (("Please bear in mind it is a maximum 4 people per room.\n"), 'cyan'))
             guest_number = int(input("Amount guests staying: \n"))
         except ValueError:
-            print("Invalid characters. Please use only numeric digits.\n")
+            print(colored (("Invalid characters. Please use only numeric digits.\n"), 'red'))
             continue
         else:
             break
 
     if guest_number > 4:
-        print("Only 4 persons maximum per room.\n")
+        print(colored (("Only 4 persons maximum per room.\n"), 'red'))
         guest_quantity()
 
     else: 
-        print(f"You have entered {guest_number} guests.\n")
-        print("Updating your reservation...\n")
+        print(colored((f"You have entered {guest_number} guests.\n"), 'cyan'))
+        print(colored(("Updating your reservation...\n"), 'cyan'))
         
     return guest_number
 
@@ -266,8 +267,8 @@ def customer_email_address():
     For taking in the details of a clients email address
     """
 
-    print("Please provide us with an e-mail address for contact purposes.\n")
-    print("E-mail address must be written as such: email@domain.com\n")
+    print(colored (("Please provide us with an e-mail address for contact purposes.\n"), 'cyan'))
+    print(colored (("E-mail address must be written as such: email@domain.com\n"), 'cyan'))
     email = input("Your e-mail address: \n")
 
     validate_email_address(email)
@@ -283,12 +284,12 @@ def validate_email_address(email):
 
     
     if (re.fullmatch(regex, email)):
-        print("E-mail address is valid.\n")
-        print(f"Your e-mail address is {email}.\n")
-        print("Updating your reservation...\n")
+        print(colored (("E-mail address is valid.\n"), 'cyan'))
+        print(colored ((f"Your e-mail address is {email}.\n"), 'cyan'))
+        print(colored (("Updating your reservation...\n"), 'cyan'))
     
     else:
-        print("Invalid e-mail, please try again.\n")
+        print(colored (("Invalid e-mail, please try again.\n"), 'red'))
         customer_email_address()
 
 
@@ -298,33 +299,33 @@ def room_type():
     """
     while True:
         try:
-            print("Please indicate which room type you desire by typing in 1, 2, 3 or 4.\n")
-            print("1. Deluxe Double. 2. Deluxe Twin. 3. Standard Double. 4. Standard Twin.\n")
+            print(colored (("Please indicate which room type you desire by typing in 1, 2, 3 or 4.\n"), 'cyan'))
+            print(colored (("1. Deluxe Double. 2. Deluxe Twin. 3. Standard Double. 4. Standard Twin.\n"), 'cyan'))
             room_choice = int(input("Write your room choice here: \n"))
         except ValueError:
-            print("Please use only numbers.\n")
+            print(colored (("Please use only numbers.\n"), 'red'))
             continue
         else:
             break
 
     if room_choice == 1:
-        print("You have picked the Deluxe Double bed option.\n")
-        print(f"The price per night is {PRICES['Deluxe Double']}€.\n")
-        print("Updating your reservation...\n")
+        print(colored (("You have picked the Deluxe Double bed option.\n"), 'cyan'))
+        print(colored ((f"The price per night is {PRICES['Deluxe Double']}€.\n"), 'cyan'))
+        print(colored (("Updating your reservation...\n"), 'cyan'))
     elif room_choice == 2:
-        print("You have picked the Deluxe Twin bed option.\n")
-        print(f"The price per night is {PRICES['Deluxe Twin']}€.\n")
-        print("Updating your reservation...\n")
+        print(colored (("You have picked the Deluxe Twin bed option.\n"), 'cyan'))
+        print(colored ((f"The price per night is {PRICES['Deluxe Twin']}€.\n"), 'cyan'))
+        print(colored (("Updating your reservation...\n"), 'cyan'))
     elif room_choice == 3:
-        print("You have picked the Standard Double bed option.\n")
-        print(f"The price per night is {PRICES['Standard Double']}€.\n")
-        print("Updating your reservation...\n")
+        print(colored (("You have picked the Standard Double bed option.\n"), 'cyan'))
+        print(colored ((f"The price per night is {PRICES['Standard Double']}€.\n"), 'cyan'))
+        print(colored (("Updating your reservation...\n"), 'cyan'))
     elif room_choice == 4:
-        print("You have picked the Standard Twin bed option.\n")
-        print(f"The price per night is {PRICES['Standard Twin']}€.\n")
-        print("Updating your reservation...\n")
+        print(colored (("You have picked the Standard Twin bed option.\n"), 'cyan'))
+        print(colored ((f"The price per night is {PRICES['Standard Twin']}€.\n"), 'cyan'))
+        print(colored (("Updating your reservation...\n"), 'cyan'))
     else:
-        print("Invalid input. Please enter a valid choice.\n")
+        print(colored (("Invalid input. Please enter a valid choice.\n"), 'red'))
         room_type()
     
     return room_choice
@@ -335,16 +336,16 @@ def customer_check_in_date():
     Collects input from user for their check-in date
     """
     while True:
-        print("Please use format dd/mm/yyyy for dates\n")
+        print(colored (("Please use format dd/mm/yyyy for dates\n"), 'cyan'))
         input_date_check_in = input("Indicate your check-in date here: \n")
 
         try:
             check_in_date = datetime.datetime.strptime(input_date_check_in, "%d/%m/%Y").date()
-            print(f"You have entered {check_in_date}.\n")
-            print("Updating your reservation...\n")
+            print(colored ((f"You have entered {check_in_date}.\n"), 'cyan'))
+            print(colored (("Updating your reservation...\n"), 'cyan'))
             break
         except ValueError:
-            print("Invalid check-in date. Please try again.\n")
+            print(colored (("Invalid check-in date. Please try again.\n"), 'red'))
             continue
 
     return check_in_date
@@ -355,16 +356,16 @@ def customer_check_out_date():
     Collects input from user for their check-out date
     """
     while True:
-        print("Please use format dd/mm/yyyy for dates\n")
+        print(colored (("Please use format dd/mm/yyyy for dates\n"), 'cyan'))
         input_date_check_out = input("Indicate your check-out date here: \n")
 
         try:
             check_out_date = datetime.datetime.strptime(input_date_check_out, "%d/%m/%Y").date()
-            print(f"You have entered {check_out_date}.\n")
-            print("Updating your reservation...\n")
+            print(colored ((f"You have entered {check_out_date}.\n"), 'cyan'))
+            print(colored (("Updating your reservation...\n"), 'cyan'))
             break
         except ValueError:
-            print("Invalid check-out date. Please try again.")
+            print(colored (("Invalid check-out date. Please try again.\n"), 'red'))
             continue
 
     return check_out_date
@@ -381,23 +382,23 @@ def calculate_total_price(room_choice, check_out_date, check_in_date):
     if room_choice == 1:
         num_days = (check_out_date - check_in_date).days
         total_price = num_days * PRICES['Deluxe Double']
-        print(f"The total price for your stay is {total_price}€.\n")
-        print("Updating your reservation...\n")
+        print(colored ((f"The total price for your stay is {total_price}€.\n"), 'cyan'))
+        print(colored (("Updating your reservation...\n"), 'cyan'))
     elif room_choice == 2:
         num_days = (check_out_date - check_in_date).days
         total_price = num_days * PRICES['Deluxe Twin']
-        print(f"The total price for your stay is {total_price}€.\n")
-        print("Updating your reservation...\n")
+        print(colored ((f"The total price for your stay is {total_price}€.\n"), 'cyan'))
+        print(colored (("Updating your reservation...\n"), 'cyan'))
     elif room_choice == 3:
         num_days = (check_out_date - check_in_date).days
         total_price = num_days * PRICES['Standard Double']
-        print(f"The total price for your stay is {total_price}€.\n")
-        print("Updating your reservation...\n")
+        print(colored ((f"The total price for your stay is {total_price}€.\n"), 'cyan'))
+        print(colored (("Updating your reservation...\n"), 'cyan'))
     elif room_choice == 4:
         num_days = (check_out_date - check_in_date).days
         total_price = num_days * PRICES['Standard Twin']
-        print(f"The total price for your stay is {total_price}€.\n")
-        print("Updating your reservation...\n")
+        print(colored ((f"The total price for your stay is {total_price}€.\n"), 'cyan'))
+        print(colored (("Updating your reservation...\n"), 'cyan'))
 
     return num_days, total_price
 
@@ -429,10 +430,7 @@ def confirm_reservation(cust_name, cust_age, no_of_guest, cust_email, type_of_ro
     Total price for stay: {total_price}.00€\n
     """
 
-    print(user_information_reservation)
-
-    # worksheet_to_update = reservations
-    # worksheet_to_update.append_row(reservation_items)
+    print(colored ((user_information_reservation), 'green'))
 
 
 def program():
