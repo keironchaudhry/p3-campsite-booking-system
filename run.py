@@ -159,10 +159,17 @@ def contact_details():
     """
     print(CONTACT)
 
-    contact_details_user_choice = int(input("Press number key 0 to return to home menu: \n"))
-
-    if contact_details_user_choice == 0:
-        print(main())
+    while True:
+        try:
+            contact_details_user_choice = int(input("Press number key 0 to return to home menu: \n"))
+            if contact_details_user_choice == 0:
+                print(main())
+            elif contact_details_user_choice <= 1:
+                print("Invalid key.")
+                continue
+        except ValueError:
+            print("Invalid key.")
+            continue
 
 
 def full_name():
