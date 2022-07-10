@@ -324,19 +324,20 @@ def customer_check_in_date():
         print("Please use format dd/mm/yyyy for dates\n")
         input_date_check_in = input("Indicate your check-in date here: \n")
 
-        valid_check_in = True
         try:
             check_in_date = datetime.datetime.strptime(input_date_check_in, "%d/%m/%Y").date()
+            print(f"You have entered {check_in_date}.\n")
+            print("Updating your reservation...\n")
+            break
         except ValueError:
-            valid_check_in = False
             print("Invalid check-in date. Please try again.\n")
+            continue
 
-    if(valid_check_in): 
-        print(f"You have entered {check_in_date}.\n")
-        print("Updating your reservation...\n")
-    else:
-        print("Invalid check-in date. Please try again.\n")
-        customer_check_in_date()
+    # if(valid_check_in): 
+    #     print(f"You have entered {check_in_date}.\n")
+    #     print("Updating your reservation...\n")
+    # else:
+    #     print("Invalid check-in date. Please try again.\n")
     
     return check_in_date
 
