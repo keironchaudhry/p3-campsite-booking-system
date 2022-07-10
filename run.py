@@ -238,6 +238,7 @@ def guest_quantity():
 
     if guest_number > 4:
         print("Only 4 persons maximum per room.\n")
+        guest_quantity()
 
     else: 
         print(f"You have entered {guest_number} guests.\n")
@@ -319,23 +320,23 @@ def customer_check_in_date():
     """
     Collects input from user for their check-in date
     """
-    print("Please use format dd/mm/yyyy for dates\n")
-    input_date_check_in = input("Indicate your check-in date here: \n")
+    while True:
+        print("Please use format dd/mm/yyyy for dates\n")
+        input_date_check_in = input("Indicate your check-in date here: \n")
 
-    valid_check_in = True
-    try:
-        check_in_date = datetime.datetime.strptime(input_date_check_in, "%d/%m/%Y").date()
-    except ValueError:
-        valid_check_in = False
-        print("Invalid check-in date. Please try again.\n")
-        check_in_date()
+        valid_check_in = True
+        try:
+            check_in_date = datetime.datetime.strptime(input_date_check_in, "%d/%m/%Y").date()
+        except ValueError:
+            valid_check_in = False
+            print("Invalid check-in date. Please try again.\n")
 
     if(valid_check_in): 
         print(f"You have entered {check_in_date}.\n")
         print("Updating your reservation...\n")
     else:
         print("Invalid check-in date. Please try again.\n")
-        check_in_date()
+        customer_check_in_date()
     
     return check_in_date
 
@@ -353,14 +354,14 @@ def customer_check_out_date():
     except ValueError:
         valid_check_out = False
         print("Invalid check-out date. Please try again.")
-        check_out_date()
+        customer_check_out_date()
 
     if(valid_check_out): 
         print(f"You have entered {check_out_date}.\n")
         print("Updating your reservation...\n")
     else:
         print("Invalid input date. Please try again.\n")
-        check_out_date()
+        customer_check_out_date()
 
     return check_out_date
 
