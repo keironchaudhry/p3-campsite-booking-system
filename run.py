@@ -126,6 +126,11 @@ def main():
             elif user_menu_choice >= 5:
                 print(colored (("Invalid key. Please enter one of the above options.\n"), 'red'))
                 main()
+
+            elif user_menu_choice >= 0:
+                print(colored (("Invalid key. Please enter one of the above options.\n"), 'red'))
+                main()
+
         except ValueError:
             print(colored (("Invalid key. Please enter one of the above options.\n"), 'red'))
             continue
