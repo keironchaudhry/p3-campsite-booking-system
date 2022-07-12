@@ -200,8 +200,8 @@ def full_name():
 
 def validate_full_name(customer_name):
     """
-    Validates the input entered as the customers full name
-    making sure that there are no numbers or symbols used.
+    Validates the input entered as the customers full name making sure that there are no numbers or symbols used.
+    Code inspired by https://www.geeksforgeeks.org/name-validation-using-ignorecase-in-python-regex/
     """
 
     regex_name = re.compile(r'^([a-z]+)( [a-z]+)*( [a-z]+)*$', re.IGNORECASE)
@@ -286,6 +286,7 @@ def customer_email_address():
 def validate_email_address(email):
     """
     Checks whether user email input is valid or invalid.
+    Code inspired by the validate_full_name function.
     """
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 
