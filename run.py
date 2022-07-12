@@ -431,6 +431,8 @@ def confirm_reservation(cust_name, cust_age, no_of_guest, cust_email, type_of_ro
     """
 
     print(colored ((user_information_reservation), 'green'))
+    
+    sys.exit()
 
 
 def program():
