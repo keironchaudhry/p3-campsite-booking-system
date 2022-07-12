@@ -86,8 +86,9 @@ Los Santos Hotel can be contacted via 0034 987 654 321.
 
 Telephone lines are open between 10AM and 9PM.
 
-Please note that no reservations can be taken directly over phone. All reservations 
-must be carried out via the Los Santos Hotel Reservation Application.
+Please note that no reservations can be taken directly over phone.
+
+All reservations must be carried out via the Los Santos Hotel Reservation Application.
 
 For any further questions, do not hesitate to send us an e-mail at info@lossantoshotel.com.
 
@@ -431,6 +432,9 @@ def confirm_reservation(cust_name, cust_age, no_of_guest, cust_email, type_of_ro
     """
 
     print(colored ((user_information_reservation), 'green'))
+
+    print(colored (("Thank you for confiding in Hotel Los Santos.\n"), 'cyan'))
+    print(colored (("Application now closing.\n"), 'blue'))
     
     sys.exit()
 
