@@ -120,7 +120,7 @@ def main():
                 print(contact_details())
 
             elif user_menu_choice == 4:
-                print(colored (("You are now exiting the program. Application now closing."), 'blue'))
+                print(colored (("You are exiting the program. Application now closing."), 'blue'))
                 sys.exit()
     
             elif user_menu_choice >= 5:
