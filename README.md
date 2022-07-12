@@ -22,11 +22,9 @@ Such data information should be able to provide actionable insights, in this cas
      * [User demographics](#user-demographic)
      * [User goals](#user-goals)
      * [Design](#design)
-     * [Typography](#typography)
      * [Colour](#colour)
-     * [Images](#images)
 * [Features](#features)
-     * To be updated.
+     * 
 * [Application features](#application-features)
      * To be updated.
 * [Technologies used](#technologies-used)
@@ -66,7 +64,36 @@ To be updated.
 
 # Features
 
-To be updated.
+The application consists of two main principal features, gaining information about the establishment and making a reservation.
+
+## **Information features**
+
+**Main menu landing page**
+
+The user is presented with the menu page, giving them options at the start of the application.
+
+![landing-page](https://user-images.githubusercontent.com/78651133/178565073-44b590f7-c6a7-4eee-b7cf-30c7eb945f0d.jpg)
+
+**Room information**
+
+If the user chooses option 2 by entering the number 2 as input, they are taken to the room information page as shown. 
+
+![room-desc-1](https://user-images.githubusercontent.com/78651133/178565173-94b68844-c426-4964-8eb5-fa31a545e6ed.jpg)
+
+![room-desc-2](https://user-images.githubusercontent.com/78651133/178565198-c5f7d334-685d-4be2-9074-352943a2eb16.jpg)
+
+**Contact details**
+
+Shoulder the user choose option 3 entering the same as input, they are taken then to the contact details where they are provided with the appropriate information.
+
+![contact-details](https://user-images.githubusercontent.com/78651133/178566398-53f50769-adaa-4e4c-8b6c-e9194b9e0b9f.jpg)
+
+**Exiting the application**
+
+Should the user choose option 4 by entering the same as input, they are able to exit the application. This is highlighted in blue so as to stand out with importance.
+
+![exiting-page](https://user-images.githubusercontent.com/78651133/178566455-c38d6ebc-2aab-49bc-96bf-6445ba46121b.jpg)
+
 
 # **Application features**
 
