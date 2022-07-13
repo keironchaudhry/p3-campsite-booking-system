@@ -122,8 +122,27 @@ The data from the user then updated onto the next empty Google Sheets row.
 
 # Technologies used
 
-[Python](https://www.python.org/)
-    
+**Coding languages**
+
+* [Python](https://www.python.org/)
+* [HTML](https://html.com/) - Included in the Code Institute template
+* [CSS](https://en.wikipedia.org/wiki/CSS) - Included in the Code Institute template
+* [JavaScript](https://www.javascript.com/) - Included in the Code Institute template
+
+**Python libraries and API**
+
+* [Re](https://docs.python.org/3/library/re.html)
+* [Datetime](https://docs.python.org/3/library/datetime.html)
+* [Sys](https://docs.python.org/3/library/sys.html)
+* [Termcolor](https://pypi.org/project/termcolor/)
+* [Gspread](https://docs.gspread.org/en/latest/)
+* [Google Auth](https://google-auth.readthedocs.io/en/master/)
+
+**Storing data**
+
+* [Google Sheets](https://www.google.com/sheets/about/)
+* [Google Drive](https://www.google.com/drive/)
+
 # Testing
 
 To be updated.
