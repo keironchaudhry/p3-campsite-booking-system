@@ -120,6 +120,16 @@ The data from the user then updated onto the next empty Google Sheets row.
 
 ![google sheets sample](https://user-images.githubusercontent.com/78651133/178742993-df62d804-664c-4369-9f72-9041af9a9f3a.jpg)
 
+**User error**
+
+The application is also able to catch user error and request appropriate data. The use of red text also helps to visually indicate to the user that an error has also occurred.
+
+Some samples are the following:
+
+![error example](https://user-images.githubusercontent.com/78651133/178813609-1ce10b03-2629-4b4e-a05a-925570391616.jpg)
+![error age sample](https://user-images.githubusercontent.com/78651133/178813614-dfc4c461-4da9-4cb7-9a6a-7890da1262d7.jpg)
+![error email sample](https://user-images.githubusercontent.com/78651133/178813615-7051e03a-2a37-48dd-b635-0611b2c369e2.jpg)
+
 # Technologies used
 
 **Coding languages**
