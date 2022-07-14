@@ -58,9 +58,13 @@ To be able to make a reservation, receive confirmation from the application of t
 * I want to limit the age of the user applicant.
 * I want to receive an update in establishment database of the client reservation.
 
-### **Design**
+## **Design**
 
-To be updated.
+The Los Santos Reservation Application required no graphical design due to the nature of the application itself, instead thought has gone into the logic design of the application with relation to requesting input, input validating, updating an external document using an API and assisting the user through the application using clear guidance and supplying said user with confirmation of their entered input. 
+
+The diagram of the logic map is as shown:
+
+![diagram logic_page-0001](https://user-images.githubusercontent.com/78651133/179033901-df318c43-87ea-4649-9589-787a12f8d055.jpg)
 
 # Features
 
