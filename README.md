@@ -55,7 +55,7 @@ To be able to make a reservation, receive confirmation from the application of t
 ### **Establishment User**
 
 * I want clear, appropriate data input.
-* I want to limit the age of the user applicant.
+* I want to limit the user applicant input, such as age or quantity of guests.
 * I want to receive an update in establishment database of the client reservation.
 
 ## **Design**
@@ -167,8 +167,40 @@ To be updated.
 
 # Development and deployment
 
-Development and deployment to be carried out through Heroku. To be further updated.
+The development environment used for this project was Gitpod. Regular commits and pushes to Github have been employed to be able to track and trace the development process of the website. The Gitpod environment for this particular project was created using a template provided by Code Institute.
+
+The live version of this project is deployed using [Heroku](https://heroku.com).
+
+The following is the procedure for how this project was deployed via Heroku:
+
+A requirements.txt needs to be created in the same folder as the .py file in Gitpod. This needs to have a list of necessary libraries the project needs to run as a Heroku Application.
+
+Then move onto the following:
+
+* Log in to Heroku (or create an account if otherwise)
+* Click on New in the Heroku dashboard and select ”Create new app”
+* Give the application an original name, choose your region and click “Create App”
+* In the settings tab for the new application two Config Vars are necessary:
+    * One is named CREDS and contains the credentials key for Google Drive API
+    * One is name PORT and has the value of 8000
+* Two buildpack scripts were added: Python and Nodejs (in that order)
+* Go to "Deploy" section, and click the Github icon in 'Deployment Method' and connect
+* In this case, this project was set to 'Automatic Deploys', however 'Manual Deploy'
+
+After those steps were taken the application was deployed at the following link: https://los-santos-hotel-app.herokuapp.com/
 
 # Acknowledgments
 
-To be finished lastly.
+For inspiration, guidance and inputs, thank you to:
+
+Sandeep Aggarwal
+
+* Absolutely fantastic mentor at Code Institute with brilliant insight into back-end software development.
+
+Jack Crymble
+
+* Friend and guide, thank you for your knowledge and insight!
+
+Jody Murray
+
+* Fellow student and colleague, thank you for your input and constant support!
