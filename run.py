@@ -334,7 +334,7 @@ def validate_email_address(email):
     Checks whether user email input is valid or invalid.
     Code inspired by the validate_full_name function.
     """
-    regex = r"\b[A-Za-z0-9._% -] @[A-Za-z0-9.-] \.[A-Z|a-z]{2,}\b"
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 
     if re.fullmatch(regex, email):
         print(colored(("E-mail address is valid.\n"), "cyan"))
