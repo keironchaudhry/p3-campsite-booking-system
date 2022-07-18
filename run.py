@@ -26,7 +26,7 @@ ROOM_TYPE = {
 }
 
 WELCOME_MESSAGE = """
-Welcome to the Hotel Los Santos Reservation Application. 
+Welcome to the Hotel Los Santos Reservation Application.
 
 Thank you for confiding in our establishment.
 
@@ -44,17 +44,17 @@ Please pick one of the following options.
 STANDARD_TWIN = """
 Standard Twin Room.
 
-Our standard twin room features two 110cm individual beds with a standard 
+Our standard twin room features two 110cm individual beds with a standard
 bathroom with shower and bath.
 
-Available in the room is also a sofa-bed which can fit up to two more people. 
+Available in the room is also a sofa-bed which can fit up to two more people.
 
 """
 
 STANDARD_DOUBLE = """
 Standard Double Room.
 
-Our standard double room features a single double bed which is 75” (191 cm) 
+Our standard double room features a single double bed which is 75” (191 cm)
 long and 54” (137 cm) wide.
 
 Room also has a bathroom with both a shower and a bath.
@@ -66,10 +66,10 @@ Available in the room is also a sofa-bed which can fit up to two more people.
 DELUXE_TWIN = """
 Deluxe Twin Room.
 
-Our deluxe twin room features two 130cm individual beds with a plush, 
+Our deluxe twin room features two 130cm individual beds with a plush,
 luxurious bathroom with a shower and bath.
 
-Room also has access to a balcony off which can be seen a beautiful 
+Room also has access to a balcony off which can be seen a beautiful
 view of Los Santos and the beach.
 
 Available in the room is also a sofa-bed which can fit up to two more people.
@@ -79,10 +79,10 @@ Available in the room is also a sofa-bed which can fit up to two more people.
 DELUXE_DOUBLE = """
 Deluxe Double Room.
 
-Our deluxe double room features a king size double bed with a plush, 
+Our deluxe double room features a king size double bed with a plush,
 luxurious bathroom with a shower and bath.
 
-Room also has access to a balcony off which can be seen a 
+Room also has access to a balcony off which can be seen a
 beautiful view of Los Santos and the beach.
 
 Available in the room is also a sofa-bed which can fit up to two more people.
@@ -96,10 +96,10 @@ Telephone lines are open between 10AM and 9PM.
 
 Please note that no reservations can be taken directly over phone.
 
-All reservations must be carried out via the Los Santos Hotel 
+All reservations must be carried out via the Los Santos Hotel
 Reservation Application.
 
-For any further questions, do not hesitate to send us 
+For any further questions, do not hesitate to send us
 an e-mail at info@lossantoshotel.com.
 
 We thank you for your interest in our establishment.
@@ -282,10 +282,10 @@ def guest_quantity():
     while True:
         try:
             print(colored(
-                ("Please indicate the numbers of guests staying.\n"), 
+                ("Please indicate the numbers of guests staying.\n"),
                 "cyan"))
             print(colored(
-                ("Enter the amount as a digit, for example: 4\n"), 
+                ("Enter the amount as a digit, for example: 4\n"),
                 "cyan"))
             print(
                 colored(
@@ -348,7 +348,7 @@ def validate_email_address(email):
 
 def room_type():
     """
-    Collects input for whether user chooses standard twin, 
+    Collects input for whether user chooses standard twin,
     double or deluxe twin, double.
     """
     while True:
@@ -391,7 +391,7 @@ def room_type():
         print(colored(("This price is per night of your stay."), "cyan"))
         print(colored(("Updating your reservation...\n"), "cyan"))
     else:
-        print(colored(("Invalid input. Please try again.\n"), "red")) 
+        print(colored(("Invalid input. Please try again.\n"), "red"))
         room_type()
 
     return room_choice
@@ -461,25 +461,20 @@ def calculate_total_price(room_choice, check_out_date, check_in_date):
         num_days = (check_out_date - check_in_date).days
         total_price = num_days * PRICES["Deluxe Twin"]
         print(colored(
-            (f"The total price for your stay is {total_price}€.\n"), 
-            "cyan"))
+            (f"The total price for your stay is {total_price}€.\n"), "cyan"))
         print(colored(("Updating your reservation...\n"), "cyan"))
     elif room_choice == 3:
         num_days = (check_out_date - check_in_date).days
         total_price = num_days * PRICES["Standard Double"]
         print(colored(
-            (f"The total price for your stay is {total_price}€.\n"), 
-            "cyan"))
+            (f"The total price for your stay is {total_price}€.\n"), "cyan"))
         print(colored(("Updating your reservation...\n"), "cyan"))
     elif room_choice == 4:
         num_days = (check_out_date - check_in_date).days
         total_price = num_days * PRICES["Standard Twin"]
         print(colored(
-            (f"The total price for your stay is {total_price}€.\n"), 
-            "cyan"))
-        print(colored(
-            ("Updating your reservation...\n"), 
-            "cyan"))
+            (f"The total price for your stay is {total_price}€.\n"), "cyan"))
+        print(colored(("Updating your reservation...\n"), "cyan"))
 
     return num_days, total_price
 
