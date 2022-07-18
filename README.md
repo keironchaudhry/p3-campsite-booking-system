@@ -21,16 +21,26 @@ Such data information should be able to provide actionable insights, in this cas
 * [UX](#ux)
      * [User demographics](#user-demographic)
      * [User goals](#user-goals)
+          * [User applicant](#user-applicant)
+          * [Establishment user](#establishment-user)
      * [Design](#design)
-     * [Colour](#colour)
 * [Features](#features)
-     * 
-* [Application features](#application-features)
-     * To be updated.
+     * [Application features](#application-features)
+     * [Main menu landing page](#main-menu-landing-page)
+     * [Room information](#room-information)
+     * [Contact details](#contact-details)
+     * [Exiting the application](#exiting-the-application)
+     * [Making a reservation](#making-a-reservation)
+     * [User error](#user-error)
 * [Technologies used](#technologies-used)
+     * [Coding languages](#coding-languages)
+     * [Python libraries and API](#python-libraries-and-api)
+     * [Storing data](#storing-data)
 * [Testing](#testing)
+     * [Fixed bugs](#fixed-bugs)
+     * [Validator testing](#validator-testing)
 * [Development and deployment](#development-and-deployment)
-* [Media](#media)
+* [Credits](#credits)
 * [Acknowledgments](#acknowledgments)
 
 # UX 
@@ -72,13 +82,13 @@ The diagram of the logic map is as shown:
 
 The application consists of two main principal features, gaining information about the establishment and making a reservation.
 
-**Main menu landing page**
+### **Main menu landing page**
 
 The user is presented with the menu page, giving them options at the start of the application.
 
 ![landing-page](https://user-images.githubusercontent.com/78651133/178565073-44b590f7-c6a7-4eee-b7cf-30c7eb945f0d.jpg)
 
-**Room information**
+### **Room information**
 
 If the user chooses option 2 by entering the number 2 as input, they are taken to the room information page as shown. 
 
@@ -86,19 +96,19 @@ If the user chooses option 2 by entering the number 2 as input, they are taken t
 
 ![room-desc-2](https://user-images.githubusercontent.com/78651133/178565198-c5f7d334-685d-4be2-9074-352943a2eb16.jpg)
 
-**Contact details**
+### **Contact details**
 
 Shoulder the user choose option 3 entering the same as input, they are taken then to the contact details where they are provided with the appropriate information.
 
 ![contact-details](https://user-images.githubusercontent.com/78651133/178566398-53f50769-adaa-4e4c-8b6c-e9194b9e0b9f.jpg)
 
-**Exiting the application**
+### **Exiting the application**
 
 Should the user choose option 4 by entering the same as input, they are able to exit the application. This is highlighted in blue so as to stand out with importance.
 
 ![exiting-page](https://user-images.githubusercontent.com/78651133/178566455-c38d6ebc-2aab-49bc-96bf-6445ba46121b.jpg)
 
-**Making a reservation**
+### **Making a reservation**
 
 Should the user choose option 1 via the same numeric input, the principal program begins, first asking for a full name, validating the input, then requesting the age and validating the data. The user is informed that the information is being updated after each step. Notable is the use of the colour cyan (using import termcolor) for the informative descriptions and the default Python terminal white when requesting user input, making it easier for the user to visually navigate through the terminal.
 
@@ -124,7 +134,7 @@ The data from the user then updated onto the next empty Google Sheets row.
 
 ![google sheets sample](https://user-images.githubusercontent.com/78651133/178742993-df62d804-664c-4369-9f72-9041af9a9f3a.jpg)
 
-**User error**
+### **User error**
 
 The application is also able to catch user error and request appropriate data. The use of red text also helps to visually indicate to the user that an error has also occurred.
 
@@ -136,14 +146,14 @@ Some samples are the following:
 
 # Technologies used
 
-**Coding languages**
+### **Coding languages**
 
 * [Python](https://www.python.org/)
 * [HTML](https://html.com/) - Included in the Code Institute template
 * [CSS](https://en.wikipedia.org/wiki/CSS) - Included in the Code Institute template
 * [JavaScript](https://www.javascript.com/) - Included in the Code Institute template
 
-**Python libraries and API**
+### **Python libraries and API**
 
 * [Re](https://docs.python.org/3/library/re.html)
 * [Datetime](https://docs.python.org/3/library/datetime.html)
@@ -152,18 +162,38 @@ Some samples are the following:
 * [Gspread](https://docs.gspread.org/en/latest/)
 * [Google Auth](https://google-auth.readthedocs.io/en/master/)
 
-**Storing data**
+### **Storing data**
 
 * [Google Sheets](https://www.google.com/sheets/about/)
 * [Google Drive](https://www.google.com/drive/)
 
 # Testing
 
-To be updated.
+Testing and checking application functionality has been carried out continuously over the development of the project.
 
-**Ongoing bugs**
+### **Fixed bugs**
 
-To be updated.
+* Validators for checking full name and e-mail address stopped responding.
+     * Issue fixed, a Python formatter had changed the code, therefore I returned it to previous code.
+
+* Updating the Google Sheets with user information would throw an error
+     * Through trial and error, bug was eventually fixed, using inspiration from the [Love Sandwiches](https://github.com/keironchaudhry/love-sandwiches/blob/dc0c7603b44eb9a174a0eb3cd9bd443151b33270/run.py#L65) project.
+
+* When the program terminates after confirmation of reservation, several None values appear before closing.
+     * Added a sys.exit at the end of the principal program function to close the application cleanly.
+
+* Lines were over the 79 character limit.
+     * Went through all the corresponding lines of code and ammended them.
+
+* Lots of trailing white spaces were detected.
+     * Went through the corresponding lines of code and rectified the white spacing.
+
+* Check-in and check-out dates would not print onto Google Sheets, threw multiple errors.
+     * Already converted datetime inputs had to be reconverted back into strings to append onto Google Sheets.
+
+### **Validator Testing**
+
+Code has been tested and corrected via the PEP8 Online Validator http://pep8online.com/.
 
 # Development and deployment
 
@@ -188,6 +218,18 @@ Then move onto the following:
 * In this case, this project was set to 'Automatic Deploys', however 'Manual Deploy'
 
 After those steps were taken the application was deployed at the following link: https://los-santos-hotel-app.herokuapp.com/
+
+# Credits
+
+Various websites have been consulted during the development of this project. All code has been credited in code comments within the project.
+
+The following have proved incredibly helpful:
+
+* [Google Sheets for Developers](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append) for insight and further information on Google Sheets updating.
+
+* [Geeks for Geeks](https://www.geeksforgeeks.org/) for insight on how to validate certain inputs, such as full names and e-mail addresses.
+
+* [Love Sandwiches](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode) by Code Institute for guidance on how to develop this project.
 
 # Acknowledgments
 
