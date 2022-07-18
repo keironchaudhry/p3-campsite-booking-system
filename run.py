@@ -109,7 +109,7 @@ CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 
-reserves = GSPREAD_CLIENT.open("los_santos_hotel").worksheet("reservations")
+reserves = GSPREAD_CLIENT.open("los_santos_hotel").worksheet("reserves")
 
 
 def main():
@@ -231,13 +231,13 @@ def full_name():
 
 def validate_full_name(customer_name):
     """
-    Validates the input entered as the customers full name 
+    Validates the input entered as the customers full name
     making sure that there are no numbers or symbols used.
     Code inspired by https://www.geeksforgeeks.org/
     name-validation-using-ignorecase-in-python-regex/
     """
 
-    regex_name = re.compile(r"^([a-z] )( [a-z] )*( [a-z] )*$", re.IGNORECASE)
+    regex_name = re.compile(r'^([a-z]+)( [a-z]+)*( [a-z]+)*$', re.IGNORECASE)
 
     res = regex_name.search(customer_name)
 
