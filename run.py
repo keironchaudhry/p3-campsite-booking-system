@@ -361,13 +361,18 @@ def customer_email_address():
     """
     For taking in the details of a clients email address
     """
+    while True:
 
-    print(colored(("Please provide an e-mail address.\n"), "cyan"))
-    print(colored(("Please use correct characters.\n"), "cyan"))
-    print(colored(("For example: email@domain.com\n"), "cyan"))
-    email = input("Your e-mail address: \n")
+        print(colored(("Please provide an e-mail address.\n"), "cyan"))
+        print(colored(("Please use correct characters.\n"), "cyan"))
+        print(colored(("For example: email@domain.com\n"), "cyan"))
 
-    validate_email_address(email)
+        email = input("Your e-mail address: \n")
+
+        if validate_email_address(email):
+            break
+        else: 
+            continue
 
     return email
 
@@ -383,10 +388,11 @@ def validate_email_address(email):
         print(colored(("E-mail address is valid.\n"), "cyan"))
         print(colored((f"Your e-mail address is {email}.\n"), "cyan"))
         print(colored(("Updating your reservation...\n"), "cyan"))
+        return True
 
     else:
         print(colored(("Invalid e-mail, please try again.\n"), "red"))
-        customer_email_address()
+        return False
 
 
 def room_type():
