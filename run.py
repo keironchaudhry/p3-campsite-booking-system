@@ -273,18 +273,33 @@ def customer_age():
         try:
             print(colored(("How old are you?\n"), "cyan"))
             age = int(input("Please enter your age: \n"))
+
+            if age <= 18:
+                print(colored(("You must be over 18 to make a reservation.\n"), "red"))
+                continue
+            elif age >= 101:
+                print(colored(("Invalid input.\n"), "red"))
+                continue
+            else:
+                print(colored((f"You are {age} years old.\n"), "cyan"))
+                print(colored(("Updating your reservation...\n"), "cyan"))
+                break
         except ValueError:
             print(colored(("Invalid input. Use numbers only.\n"), "red"))
             continue
         else:
             break
 
-    if age <= 18:
-        print(colored(("You must be over 18 to make a reservation.\n"), "red"))
-        customer_age()
-    else:
-        print(colored((f"You are {age} years old.\n"), "cyan"))
-        print(colored(("Updating your reservation...\n"), "cyan"))
+    # if age <= 18:
+    #     print(colored(("You must be over 18 to make a reservation.\n"), "red"))
+    #     return False
+    # elif age >= 101:
+    #     print(colored(("Invalid input.\n"), "red"))
+    #     return False
+    # else:
+    #     print(colored((f"You are {age} years old.\n"), "cyan"))
+    #     print(colored(("Updating your reservation...\n"), "cyan"))
+    #     return True
 
     return age
 
