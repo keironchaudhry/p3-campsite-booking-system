@@ -175,9 +175,9 @@ def room_info():
     print(colored((DELUXE_TWIN), "cyan"))
     print(colored((DELUXE_DOUBLE), "cyan"))
 
-    x = input("Press any key to exit.")
+    exit_room_info = input("Press any key to exit.")
 
-    if x == "":
+    if exit_room_info == "":
         main()
     else:
         main()
@@ -203,9 +203,9 @@ def contact_details():
     """
     print(colored((CONTACT), "cyan"))
 
-    x = input("Press any key to exit.")
+    exit_contact_details = input("Press any key to exit.")
 
-    if x == "":
+    if exit_contact_details == "":
         main()
     else:
         main()
