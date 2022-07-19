@@ -322,6 +322,18 @@ def guest_quantity():
                 )
             )
             guest_number = int(input("Amount guests staying: \n"))
+
+            if guest_number > 4:
+                print(colored(("Only 4 persons maximum per room.\n"), "red"))
+                continue
+            elif guest_number <= 0:
+                print(colored(("Invalid input.\n"), "red"))
+                continue
+            else:
+                print(colored((f"You have entered {guest_number} guests.\n"), "cyan"))
+                print(colored(("Updating your reservation...\n"), "cyan"))
+                break
+
         except ValueError:
             print(
                 colored(
@@ -332,13 +344,13 @@ def guest_quantity():
         else:
             break
 
-    if guest_number > 4:
-        print(colored(("Only 4 persons maximum per room.\n"), "red"))
-        guest_quantity()
+    # if guest_number > 4:
+    #     print(colored(("Only 4 persons maximum per room.\n"), "red"))
+    #     guest_quantity()
 
-    else:
-        print(colored((f"You have entered {guest_number} guests.\n"), "cyan"))
-        print(colored(("Updating your reservation...\n"), "cyan"))
+    # else:
+    #     print(colored((f"You have entered {guest_number} guests.\n"), "cyan"))
+    #     print(colored(("Updating your reservation...\n"), "cyan"))
 
     return guest_number
 
