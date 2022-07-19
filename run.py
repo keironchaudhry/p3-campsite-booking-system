@@ -175,19 +175,26 @@ def room_info():
     print(colored((DELUXE_TWIN), "cyan"))
     print(colored((DELUXE_DOUBLE), "cyan"))
 
-    while True:
-        try:
-            room_info_user_choice = int(
-                input("Press number key 0 to return to home menu: \n")
-            )
-            if room_info_user_choice == 0:
-                print(main())
-            elif room_info_user_choice <= 1:
-                print(colored(("Invalid key."), "red"))
-                continue
-        except ValueError:
-            print(colored(("Invalid key."), "red"))
-            continue
+    x = input("Press any key to exit.")
+
+    if x == "":
+        main()
+    else:
+        main()
+
+    # while True:
+    #     try:
+    #         room_info_user_choice = int(
+    #             input("Press number key 0 to return to home menu: \n")
+    #         )
+    #         if room_info_user_choice == 0:
+    #             print(main())
+    #         elif room_info_user_choice <= 1:
+    #             print(colored(("Invalid key."), "red"))
+    #             continue
+    #     except ValueError:
+    #         print(colored(("Invalid key."), "red"))
+    #         continue
 
 
 def contact_details():
@@ -196,19 +203,26 @@ def contact_details():
     """
     print(colored((CONTACT), "cyan"))
 
-    while True:
-        try:
-            contact_details_user_choice = int(
-                input("Press number key 0 to return to home menu: \n")
-            )
-            if contact_details_user_choice == 0:
-                print(main())
-            elif contact_details_user_choice <= 1:
-                print(colored(("Invalid key."), "red"))
-                continue
-        except ValueError:
-            print(colored(("Invalid key."), "red"))
-            continue
+    x = input("Press any key to exit.")
+
+    if x == "":
+        main()
+    else:
+        main()
+
+    # while True:
+    #     try:
+    #         contact_details_user_choice = int(
+    #             input("Press number key 0 to return to home menu: \n")
+    #         )
+    #         if contact_details_user_choice == 0:
+    #             print(main())
+    #         elif contact_details_user_choice <= 1:
+    #             print(colored(("Invalid key."), "red"))
+    #             continue
+    #     except ValueError:
+    #         print(colored(("Invalid key."), "red"))
+    #         continue
 
 
 def full_name():
