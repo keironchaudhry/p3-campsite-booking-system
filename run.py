@@ -412,36 +412,86 @@ def room_type():
             )
             print(colored(("1. Deluxe Double. 2. Deluxe Twin."), "cyan"))
             print(colored(("3. Standard Double. 4. Standard Twin.\n"), "cyan"))
+
             room_choice = int(input("Write your room choice here: \n"))
+
+            if room_choice == 1:
+                print(colored(
+                    ("Deluxe Double option selected.\n"), "cyan"))
+                print(colored(
+                    (f"Price is {PRICES['Deluxe Double']}€.\n"), "cyan"))
+                print(colored(
+                    ("This price is per night of your stay."), "cyan"))
+                print(colored(
+                    ("Updating your reservation...\n"), "cyan"))
+                break
+            elif room_choice == 2:
+                print(colored(
+                    ("Deluxe Twin option selected.\n"), "cyan"))
+                print(colored(
+                    (f"Price is {PRICES['Deluxe Twin']}€.\n"), "cyan"))
+                print(colored(
+                    ("This price is per night of your stay."), "cyan"))
+                print(colored(
+                    ("Updating your reservation...\n"), "cyan"))
+                break
+            elif room_choice == 3:
+                print(colored(
+                    ("Standard Double option selected.\n"), "cyan"))
+                print(colored(
+                    (f"Price is {PRICES['Standard Double']}€.\n"), "cyan"))
+                print(colored(
+                    ("This price is per night of your stay."), "cyan"))
+                print(colored(
+                    ("Updating your reservation...\n"), "cyan"))
+                break
+            elif room_choice == 4:
+                print(colored(
+                    ("Standard Twin bed option selected.\n"), "cyan"))
+                print(colored(
+                    (f"The price is {PRICES['Standard Twin']}€.\n"), "cyan"))
+                print(colored(
+                    ("This price is per night of your stay."), "cyan"))
+                print(colored(
+                    ("Updating your reservation...\n"), "cyan"))
+                break
+            elif room_choice >= 5:
+                print(colored(("Invalid input.\n"), "red"))
+                continue
+            else:
+                print(colored(("Invalid input.\n"), "red"))
+                continue
         except ValueError:
             print(colored(("Please use only numbers.\n"), "red"))
             continue
         else:
             break
 
-    if room_choice == 1:
-        print(colored(("Deluxe Double option selected.\n"), "cyan"))
-        print(colored((f"Price is {PRICES['Deluxe Double']}€.\n"), "cyan"))
-        print(colored(("This price is per night of your stay."), "cyan"))
-        print(colored(("Updating your reservation...\n"), "cyan"))
-    elif room_choice == 2:
-        print(colored(("Deluxe Twin option selected.\n"), "cyan"))
-        print(colored((f"Price is {PRICES['Deluxe Twin']}€.\n"), "cyan"))
-        print(colored(("This price is per night of your stay."), "cyan"))
-        print(colored(("Updating your reservation...\n"), "cyan"))
-    elif room_choice == 3:
-        print(colored(("Standard Double option selected.\n"), "cyan"))
-        print(colored((f"Price is {PRICES['Standard Double']}€.\n"), "cyan"))
-        print(colored(("This price is per night of your stay."), "cyan"))
-        print(colored(("Updating your reservation...\n"), "cyan"))
-    elif room_choice == 4:
-        print(colored(("Standard Twin bed option selected.\n"), "cyan"))
-        print(colored((f"The price is {PRICES['Standard Twin']}€.\n"), "cyan"))
-        print(colored(("This price is per night of your stay."), "cyan"))
-        print(colored(("Updating your reservation...\n"), "cyan"))
-    else:
-        print(colored(("Invalid input. Please try again.\n"), "red"))
-        room_type()
+    # if room_choice == 1:
+    #     print(colored(("Deluxe Double option selected.\n"), "cyan"))
+    #     print(colored((f"Price is {PRICES['Deluxe Double']}€.\n"), "cyan"))
+    #     print(colored(("This price is per night of your stay."), "cyan"))
+    #     print(colored(("Updating your reservation...\n"), "cyan"))
+    # elif room_choice == 2:
+    #     print(colored(("Deluxe Twin option selected.\n"), "cyan"))
+    #     print(colored((f"Price is {PRICES['Deluxe Twin']}€.\n"), "cyan"))
+    #     print(colored(("This price is per night of your stay."), "cyan"))
+    #     print(colored(("Updating your reservation...\n"), "cyan"))
+    # elif room_choice == 3:
+    #     print(colored(("Standard Double option selected.\n"), "cyan"))
+    #     print(colored((f"Price is {PRICES['Standard Double']}€.\n"), "cyan"))
+    #     print(colored(("This price is per night of your stay."), "cyan"))
+    #     print(colored(("Updating your reservation...\n"), "cyan"))
+    # elif room_choice == 4:
+    #     print(colored(("Standard Twin bed option selected.\n"), "cyan"))
+    #     print(colored((f"The price is {PRICES['Standard Twin']}€.\n"), "cyan"))
+    #     print(colored(("This price is per night of your stay."), "cyan"))
+    #     print(colored(("Updating your reservation...\n"), "cyan"))
+    # elif room_choice >= 5:
+    #     print(colored(("Invalid input.\n"), "red"))
+    # else:
+    #     print(colored(("Invalid input. Please try again.\n"), "red"))
+    #     room_type()
 
     return room_choice
 
