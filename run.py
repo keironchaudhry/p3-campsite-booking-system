@@ -239,6 +239,8 @@ def full_name():
 
         if validate_full_name(customer_name):
             break
+        else:
+            continue
 
     return customer_name
 
