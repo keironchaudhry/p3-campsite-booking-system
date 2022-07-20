@@ -1,5 +1,6 @@
 import re
 import datetime
+from datetime import date
 import sys
 import gspread
 from google.oauth2.service_account import Credentials
@@ -500,6 +501,9 @@ def customer_check_in_date():
     """
     Collects input from user for their check-in date
     """
+
+    present_date = date.today()
+
     while True:
         print(colored(("Please use format dd/mm/yyyy for dates\n"), "cyan"))
         input_date_check_in = input("Indicate your check-in date here: \n")
@@ -510,7 +514,13 @@ def customer_check_in_date():
             ).date()
             print(colored((f"You have entered {check_in_date}.\n"), "cyan"))
             print(colored(("Updating your reservation...\n"), "cyan"))
-            break
+
+            if check_in_date <= present_date:
+                print(colored(
+                ("Invalid check-in date. Please try again.\n"), "red"))
+                continue
+            else:
+                break
         except ValueError:
             print(colored(
                 ("Invalid check-in date. Please try again.\n"), "red"))
