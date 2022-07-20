@@ -184,20 +184,6 @@ def room_info():
     else:
         main()
 
-    # while True:
-    #     try:
-    #         room_info_user_choice = int(
-    #             input("Press number key 0 to return to home menu: \n")
-    #         )
-    #         if room_info_user_choice == 0:
-    #             print(main())
-    #         elif room_info_user_choice <= 1:
-    #             print(colored(("Invalid key."), "red"))
-    #             continue
-    #     except ValueError:
-    #         print(colored(("Invalid key."), "red"))
-    #         continue
-
 
 def contact_details():
     """
@@ -211,20 +197,6 @@ def contact_details():
         main()
     else:
         main()
-
-    # while True:
-    #     try:
-    #         contact_details_user_choice = int(
-    #             input("Press number key 0 to return to home menu: \n")
-    #         )
-    #         if contact_details_user_choice == 0:
-    #             print(main())
-    #         elif contact_details_user_choice <= 1:
-    #             print(colored(("Invalid key."), "red"))
-    #             continue
-    #     except ValueError:
-    #         print(colored(("Invalid key."), "red"))
-    #         continue
 
 
 def full_name():
@@ -294,17 +266,6 @@ def customer_age():
         else:
             break
 
-    # if age <= 18:
-    #     print(colored(("You must be over 18 to make a reservation.\n"), "red"))
-    #     return False
-    # elif age >= 101:
-    #     print(colored(("Invalid input.\n"), "red"))
-    #     return False
-    # else:
-    #     print(colored((f"You are {age} years old.\n"), "cyan"))
-    #     print(colored(("Updating your reservation...\n"), "cyan"))
-    #     return True
-
     return age
 
 
@@ -348,14 +309,6 @@ def guest_quantity():
         else:
             break
 
-    # if guest_number > 4:
-    #     print(colored(("Only 4 persons maximum per room.\n"), "red"))
-    #     guest_quantity()
-
-    # else:
-    #     print(colored((f"You have entered {guest_number} guests.\n"), "cyan"))
-    #     print(colored(("Updating your reservation...\n"), "cyan"))
-
     return guest_number
 
 
@@ -373,7 +326,7 @@ def customer_email_address():
 
         if validate_email_address(email):
             break
-        else: 
+        else:
             continue
 
     return email
@@ -469,34 +422,7 @@ def room_type():
         else:
             break
 
-    # if room_choice == 1:
-    #     print(colored(("Deluxe Double option selected.\n"), "cyan"))
-    #     print(colored((f"Price is {PRICES['Deluxe Double']}€.\n"), "cyan"))
-    #     print(colored(("This price is per night of your stay."), "cyan"))
-    #     print(colored(("Updating your reservation...\n"), "cyan"))
-    # elif room_choice == 2:
-    #     print(colored(("Deluxe Twin option selected.\n"), "cyan"))
-    #     print(colored((f"Price is {PRICES['Deluxe Twin']}€.\n"), "cyan"))
-    #     print(colored(("This price is per night of your stay."), "cyan"))
-    #     print(colored(("Updating your reservation...\n"), "cyan"))
-    # elif room_choice == 3:
-    #     print(colored(("Standard Double option selected.\n"), "cyan"))
-    #     print(colored((f"Price is {PRICES['Standard Double']}€.\n"), "cyan"))
-    #     print(colored(("This price is per night of your stay."), "cyan"))
-    #     print(colored(("Updating your reservation...\n"), "cyan"))
-    # elif room_choice == 4:
-    #     print(colored(("Standard Twin bed option selected.\n"), "cyan"))
-    #     print(colored((f"The price is {PRICES['Standard Twin']}€.\n"), "cyan"))
-    #     print(colored(("This price is per night of your stay."), "cyan"))
-    #     print(colored(("Updating your reservation...\n"), "cyan"))
-    # elif room_choice >= 5:
-    #     print(colored(("Invalid input.\n"), "red"))
-    # else:
-    #     print(colored(("Invalid input. Please try again.\n"), "red"))
-    #     room_type()
-
     return room_choice
-
 
 def customer_check_in_date():
     """
@@ -526,7 +452,6 @@ def customer_check_in_date():
             continue
 
     return check_in_date
-
 
 def customer_check_out_date(check_in_date):
     """
@@ -559,7 +484,6 @@ def customer_check_out_date(check_in_date):
             continue
 
     return check_out_date
-
 
 def calculate_total_price(room_choice, check_out_date, check_in_date):
     """
@@ -678,7 +602,6 @@ def program():
         num_days,
         total_price,
     )
-
 
 if __name__ == "__main__":
     main()
