@@ -111,6 +111,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 
 reserves = GSPREAD_CLIENT.open("los_santos_hotel").worksheet("reserves")
+present_date = date.today()
 
 
 def main():
@@ -502,8 +503,6 @@ def customer_check_in_date():
     Collects input from user for their check-in date
     """
 
-    present_date = date.today()
-
     while True:
         print(colored(("Please use format dd/mm/yyyy for dates\n"), "cyan"))
         input_date_check_in = input("Indicate your check-in date here: \n")
@@ -517,7 +516,7 @@ def customer_check_in_date():
 
             if check_in_date <= present_date:
                 print(colored(
-                ("Invalid check-in date. Please try again.\n"), "red"))
+                    ("Invalid check-in date. Please try again.\n"), "red"))
                 continue
             else:
                 break
@@ -529,7 +528,7 @@ def customer_check_in_date():
     return check_in_date
 
 
-def customer_check_out_date():
+def customer_check_out_date(check_in_date):
     """
     Collects input from user for their check-out date
     """
@@ -543,7 +542,17 @@ def customer_check_out_date():
             ).date()
             print(colored((f"You have entered {check_out_date}.\n"), "cyan"))
             print(colored(("Updating your reservation...\n"), "cyan"))
-            break
+
+            if check_out_date <= present_date:
+                print(colored(
+                    ("Invalid check-out date. Please try again.\n"), "red"))
+                continue
+            elif check_out_date <= check_in_date:
+                print(colored(
+                    ("Invalid check-out date. Please try again.\n"), "red"))
+                continue
+            else:
+                break
         except ValueError:
             print(colored(
                 ("Invalid check-out date. Please try again.\n"), "red"))
@@ -654,7 +663,7 @@ def program():
     cust_email = customer_email_address()
     type_of_room = room_type()
     date_check_in = customer_check_in_date()
-    date_check_out = customer_check_out_date()
+    date_check_out = customer_check_out_date(date_check_in)
     num_days, total_price = calculate_total_price(
         type_of_room, date_check_out, date_check_in
     )
