@@ -457,6 +457,10 @@ def customer_check_out_date(check_in_date):
     """
     Collects input from user for their check-out date
     """
+
+    max_date = "01/01/2023"
+    max_check_out_date = datetime.datetime.strptime(max_date, "%d/%m/%Y").date()
+
     while True:
         print(colored(("Please use format dd/mm/yyyy for dates\n"), "cyan"))
         input_date_check_out = input("Indicate your check-out date here: \n")
@@ -473,6 +477,10 @@ def customer_check_out_date(check_in_date):
                     ("Invalid check-out date. Please try again.\n"), "red"))
                 continue
             elif check_out_date <= check_in_date:
+                print(colored(
+                    ("Invalid check-out date. Please try again.\n"), "red"))
+                continue
+            elif check_out_date >= max_check_out_date:
                 print(colored(
                     ("Invalid check-out date. Please try again.\n"), "red"))
                 continue
