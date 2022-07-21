@@ -191,6 +191,18 @@ Testing and checking application functionality has been carried out continuously
 * Check-in and check-out dates would not print onto Google Sheets, threw multiple errors.
      * Already converted datetime inputs had to be reconverted back into strings to append onto Google Sheets.
 
+* Age function would return colossal inputs beyond 100 years of age.
+     * Modified the age function to cap maximum age input, for example > 100 years old. 
+
+* Name, age, guest quantity and e-mail functions would return incorrect input despite calling out errors.
+     * Corrected this by moving all if statements into the While loop of each function and having invalid input return False.
+     
+* Check-in function would accept dates in the past.
+     * Amended this by defining a variable with the date of today and limiting input beyond that. 
+
+* Check-out function would accept dates in the past beyond the check-in date, causing irregular calculations.
+     * Amended this by limiting user input into the past beyond check-in date, today's date and created a maximum date to stop user input too far into the future.
+
 ### **Validator Testing**
 
 Code has been tested and corrected via the PEP8 Online Validator http://pep8online.com/.
