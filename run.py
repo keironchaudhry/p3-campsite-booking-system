@@ -110,8 +110,13 @@ CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 
+# This variable refers to the Google Sheets document
 reserves = GSPREAD_CLIENT.open("los_santos_hotel").worksheet("reserves")
+
+# Date variables are for the check-in and check-out functions
 present_date = date.today()
+max_date = "01/01/2023"
+max_check_out_date = datetime.datetime.strptime(max_date, "%d/%m/%Y").date()
 
 
 def main():
@@ -249,7 +254,7 @@ def customer_age():
         try:
             print(colored(("How old are you?\n"), "cyan"))
             age = int(input("Please enter your age: \n"))
-
+            # Validates user input for age
             if age <= 18:
                 print(colored(("You must be over 18 to make a reservation.\n"), "red"))
                 continue
@@ -287,7 +292,7 @@ def guest_quantity():
                 )
             )
             guest_number = int(input("Amount guests staying: \n"))
-
+            # Validates user input for guest quantity
             if guest_number > 4:
                 print(colored(("Only 4 persons maximum per room.\n"), "red"))
                 continue
@@ -424,6 +429,7 @@ def room_type():
 
     return room_choice
 
+
 def customer_check_in_date():
     """
     Collects input from user for their check-in date
@@ -434,15 +440,20 @@ def customer_check_in_date():
         input_date_check_in = input("Indicate your check-in date here: \n")
 
         try:
+            # Converts user input into a datetime
             check_in_date = datetime.datetime.strptime(
                 input_date_check_in, "%d/%m/%Y"
             ).date()
             print(colored((f"You have entered {check_in_date}.\n"), "cyan"))
             print(colored(("Updating your reservation...\n"), "cyan"))
-
+            # Validates user input for check-in date
             if check_in_date <= present_date:
                 print(colored(
                     ("Invalid check-in date. Please try again.\n"), "red"))
+                continue
+            elif check_out_date >= max_check_out_date:
+                print(colored(
+                    ("Invalid check-out date. Please try again.\n"), "red"))
                 continue
             else:
                 break
@@ -453,25 +464,25 @@ def customer_check_in_date():
 
     return check_in_date
 
+
 def customer_check_out_date(check_in_date):
     """
     Collects input from user for their check-out date
+    Validates user input for check-out date
     """
-
-    max_date = "01/01/2023"
-    max_check_out_date = datetime.datetime.strptime(max_date, "%d/%m/%Y").date()
 
     while True:
         print(colored(("Please use format dd/mm/yyyy for dates\n"), "cyan"))
         input_date_check_out = input("Indicate your check-out date here: \n")
 
         try:
+            # Converts user input into a datetime
             check_out_date = datetime.datetime.strptime(
                 input_date_check_out, "%d/%m/%Y"
             ).date()
             print(colored((f"You have entered {check_out_date}.\n"), "cyan"))
             print(colored(("Updating your reservation...\n"), "cyan"))
-
+            # Validation for check-out date input
             if check_out_date <= present_date:
                 print(colored(
                     ("Invalid check-out date. Please try again.\n"), "red"))
@@ -492,6 +503,7 @@ def customer_check_out_date(check_in_date):
             continue
 
     return check_out_date
+
 
 def calculate_total_price(room_choice, check_out_date, check_in_date):
     """
