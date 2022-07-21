@@ -227,7 +227,8 @@ Then move onto the following:
     * One is name PORT and has the value of 8000
 * Two buildpack scripts were added: Python and Nodejs (in that order)
 * Go to "Deploy" section, and click the Github icon in 'Deployment Method' and connect
-* In this case, this project was set to 'Automatic Deploys', however 'Manual Deploy'
+* In this case, this project was set to 'Automatic Deploys'.
+* Deployment should then be completed within a brief time span and link readily available. 
 
 After those steps were taken the application was deployed at the following link: https://los-santos-hotel-app.herokuapp.com/
 
