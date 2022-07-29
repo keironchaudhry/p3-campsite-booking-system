@@ -182,9 +182,9 @@ def room_info():
     print(colored((DELUXE_TWIN), "cyan"))
     print(colored((DELUXE_DOUBLE), "cyan"))
 
-    exit_room_info = input("Press any key to exit.")
+    exit_room_info = input("Press any key to return to main menu.")
 
-    if exit_room_info == "":
+    if exit_room_info:
         main()
     else:
         main()
@@ -196,11 +196,11 @@ def contact_details():
     """
     print(colored((CONTACT), "cyan"))
 
-    exit_contact_details = input("Press any key to exit.")
+    exit_contact_details = input("Press any key to return to main menu.")
 
-    if exit_contact_details == "":
+    if exit_contact_details:
         main()
-    else:
+    else: 
         main()
 
 
@@ -218,8 +218,6 @@ def full_name():
 
         if validate_full_name(customer_name):
             break
-        else:
-            continue
 
     return customer_name
 
@@ -331,8 +329,6 @@ def customer_email_address():
 
         if validate_email_address(email):
             break
-        else:
-            continue
 
     return email
 
