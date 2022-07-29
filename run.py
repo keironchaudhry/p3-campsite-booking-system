@@ -482,29 +482,24 @@ def calculate_total_price(room_choice, check_out_date, check_in_date):
     total_price = 0
 
     if room_choice == 1:
-        num_days = (check_out_date - check_in_date).days
-        total_price = num_days * PRICES["Deluxe Double"]
-        print(colored(
-            (f"The total price for your stay is {total_price}€.\n"), "cyan"))
-        print(colored(("Updating your reservation...\n"), "cyan"))
+        selected_room = "Deluxe Double"
+
     elif room_choice == 2:
-        num_days = (check_out_date - check_in_date).days
-        total_price = num_days * PRICES["Deluxe Twin"]
-        print(colored(
-            (f"The total price for your stay is {total_price}€.\n"), "cyan"))
-        print(colored(("Updating your reservation...\n"), "cyan"))
+        selected_room = "Deluxe Twin"
+
     elif room_choice == 3:
-        num_days = (check_out_date - check_in_date).days
-        total_price = num_days * PRICES["Standard Double"]
-        print(colored(
-            (f"The total price for your stay is {total_price}€.\n"), "cyan"))
-        print(colored(("Updating your reservation...\n"), "cyan"))
+        selected_room = "Standard Double"
+        
     elif room_choice == 4:
-        num_days = (check_out_date - check_in_date).days
-        total_price = num_days * PRICES["Standard Twin"]
-        print(colored(
-            (f"The total price for your stay is {total_price}€.\n"), "cyan"))
-        print(colored(("Updating your reservation...\n"), "cyan"))
+        selected_room = "Standard Twin"
+
+    if selected_room:
+        price = PRICES[selected_room]
+    num_days = (check_out_date - check_in_date).days
+    total_price = num_days * price
+    print(colored(
+        (f"The total price for your stay is {total_price}€.\n"), "cyan"))
+    print(colored(("Updating your reservation...\n"), "cyan"))
 
     return num_days, total_price
 
