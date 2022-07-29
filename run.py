@@ -372,44 +372,16 @@ def room_type():
             room_choice = int(input("Write your room choice here: \n"))
 
             if room_choice == 1:
-                print(colored(
-                    ("Deluxe Double option selected.\n"), "cyan"))
-                print(colored(
-                    (f"Price is {PRICES['Deluxe Double']}€.\n"), "cyan"))
-                print(colored(
-                    ("This price is per night of your stay."), "cyan"))
-                print(colored(
-                    ("Updating your reservation...\n"), "cyan"))
+                selected_room = "Deluxe Double"
                 break
             elif room_choice == 2:
-                print(colored(
-                    ("Deluxe Twin option selected.\n"), "cyan"))
-                print(colored(
-                    (f"Price is {PRICES['Deluxe Twin']}€.\n"), "cyan"))
-                print(colored(
-                    ("This price is per night of your stay."), "cyan"))
-                print(colored(
-                    ("Updating your reservation...\n"), "cyan"))
+                selected_room = "Deluxe Twin"
                 break
             elif room_choice == 3:
-                print(colored(
-                    ("Standard Double option selected.\n"), "cyan"))
-                print(colored(
-                    (f"Price is {PRICES['Standard Double']}€.\n"), "cyan"))
-                print(colored(
-                    ("This price is per night of your stay."), "cyan"))
-                print(colored(
-                    ("Updating your reservation...\n"), "cyan"))
+                selected_room = "Standard Double"
                 break
             elif room_choice == 4:
-                print(colored(
-                    ("Standard Twin bed option selected.\n"), "cyan"))
-                print(colored(
-                    (f"The price is {PRICES['Standard Twin']}€.\n"), "cyan"))
-                print(colored(
-                    ("This price is per night of your stay."), "cyan"))
-                print(colored(
-                    ("Updating your reservation...\n"), "cyan"))
+                selected_room = "Standard Twin"
                 break
             elif room_choice >= 5:
                 print(colored(("Invalid input.\n"), "red"))
@@ -420,8 +392,12 @@ def room_type():
         except ValueError:
             print(colored(("Please use only numbers.\n"), "red"))
             continue
-        else:
-            break
+    if selected_room:
+        price = PRICES[selected_room]
+    print(colored((f"{selected_room} option selected.\n"), "cyan"))
+    print(colored((f"Price is {price}€.\n"), "cyan"))
+    print(colored(("This price is per night of your stay."), "cyan"))
+    print(colored(("Updating your reservation...\n"), "cyan"))
 
     return room_choice
 
