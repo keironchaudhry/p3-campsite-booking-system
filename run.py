@@ -455,11 +455,7 @@ def customer_check_out_date(check_in_date):
             print(colored((f"You have entered {check_out_date}.\n"), "cyan"))
             print(colored(("Updating your reservation...\n"), "cyan"))
             # Validation for check-out date input
-            if check_out_date <= present_date:
-                print(colored(
-                    ("Invalid check-out date. Please try again.\n"), "red"))
-                continue
-            elif check_out_date <= check_in_date:
+            if check_out_date <= check_in_date:
                 print(colored(
                     ("Invalid check-out date. Please try again.\n"), "red"))
                 continue
