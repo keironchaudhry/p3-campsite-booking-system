@@ -168,8 +168,8 @@ def main():
                 )
             )
             continue
-        else:
-            break
+        # else:
+        #     break
 
 
 def room_info():
@@ -200,7 +200,7 @@ def contact_details():
 
     if exit_contact_details:
         main()
-    else: 
+    else:
         main()
 
 
@@ -266,8 +266,6 @@ def customer_age():
         except ValueError:
             print(colored(("Invalid input. Use numbers only.\n"), "red"))
             continue
-        else:
-            break
 
     return age
 
@@ -309,8 +307,6 @@ def guest_quantity():
                 )
             )
             continue
-        else:
-            break
 
     return guest_number
 
@@ -483,13 +479,10 @@ def calculate_total_price(room_choice, check_out_date, check_in_date):
 
     if room_choice == 1:
         selected_room = "Deluxe Double"
-
     elif room_choice == 2:
         selected_room = "Deluxe Twin"
-
     elif room_choice == 3:
-        selected_room = "Standard Double"
-        
+        selected_room = "Standard Double"      
     elif room_choice == 4:
         selected_room = "Standard Twin"
 
