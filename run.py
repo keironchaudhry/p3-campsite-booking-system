@@ -451,10 +451,10 @@ def customer_check_in_date():
                 print(colored(
                     ("Invalid check-in date. Please try again.\n"), "red"))
                 continue
-            elif check_out_date >= max_check_out_date:
-                print(colored(
-                    ("Invalid check-out date. Please try again.\n"), "red"))
-                continue
+            # elif check_out_date >= max_check_out_date:
+            #     print(colored(
+            #         ("Invalid check-out date. Please try again.\n"), "red"))
+            #     continue
             else:
                 break
         except ValueError:
