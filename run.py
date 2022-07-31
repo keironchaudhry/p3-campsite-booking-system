@@ -257,14 +257,14 @@ def customer_age():
                 print(colored(("You must be over 18 to make a reservation.\n"), "red"))
                 continue
             elif age >= 101:
-                print(colored(("Invalid input.\n"), "red"))
+                print(colored(("Invalid age input.\n"), "red"))
                 continue
             else:
                 print(colored((f"You are {age} years old.\n"), "cyan"))
                 print(colored(("Updating your reservation...\n"), "cyan"))
                 break
         except ValueError:
-            print(colored(("Invalid input. Use numbers only.\n"), "red"))
+            print(colored(("Invalid age input. Use numbers only.\n"), "red"))
             continue
 
     return age
@@ -293,7 +293,7 @@ def guest_quantity():
                 print(colored(("Only 4 persons maximum per room.\n"), "red"))
                 continue
             elif guest_number <= 0:
-                print(colored(("Invalid input.\n"), "red"))
+                print(colored(("Invalid number input.\n"), "red"))
                 continue
             else:
                 print(colored((f"You have entered {guest_number} guests.\n"), "cyan"))
@@ -380,7 +380,7 @@ def room_type():
                 selected_room = "Standard Twin"
                 break
             elif room_choice >= 5:
-                print(colored(("Invalid input.\n"), "red"))
+                print(colored(("Invalid choice input.\n"), "red"))
                 continue
             else:
                 print(colored(("Invalid input.\n"), "red"))
@@ -421,7 +421,7 @@ def customer_check_in_date():
                 continue
             elif check_in_date >= max_check_out_date:
                 print(colored(
-                    ("Invalid check-out date. Please try again.\n"), "red"))
+                    ("Invalid check-in date. Please try again.\n"), "red"))
                 continue
             else:
                 break
