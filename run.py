@@ -129,13 +129,10 @@ def main():
             user_menu_choice = int(input("Enter here your input: \n"))
             if user_menu_choice == 1:
                 print(program())
-
             elif user_menu_choice == 2:
                 print(room_info())
-
             elif user_menu_choice == 3:
                 print(contact_details())
-
             elif user_menu_choice == 4:
                 print(
                     colored(
@@ -144,32 +141,15 @@ def main():
                     )
                 )
                 sys.exit()
-
             elif user_menu_choice >= 5:
-                print(
-                    colored(
-                        ("Invalid key. Please try again.\n"), "red"
-                    )
-                )
+                print(colored(("Invalid key. Please try again.\n"), "red"))
                 main()
-
             elif user_menu_choice >= 0:
-                print(
-                    colored(
-                        ("Invalid key. Please try again.\n"), "red"
-                    )
-                )
+                print(colored(("Invalid key. Please try again.\n"), "red"))
                 main()
-
         except ValueError:
-            print(
-                colored(
-                    ("Invalid key. Please try again.\n"), "red"
-                )
-            )
+            print(colored(("Invalid key. Please try again.\n"), "red"))
             continue
-        # else:
-        #     break
 
 
 def room_info():
@@ -254,7 +234,8 @@ def customer_age():
             age = int(input("Please enter your age: \n"))
             # Validates user input for age
             if age <= 18:
-                print(colored(("You must be over 18 to make a reservation.\n"), "red"))
+                print(colored(
+                    ("You must be over 18 to make a reservation.\n"), "red"))
                 continue
             elif age >= 101:
                 print(colored(("Invalid age input.\n"), "red"))
@@ -277,16 +258,10 @@ def guest_quantity():
     while True:
         try:
             print(colored(
-                ("Please indicate the numbers of guests staying.\n"),
-                "cyan"))
+                ("Please indicate the numbers of guests staying.\n"), "cyan"))
             print(colored(
-                ("Enter the amount as a digit, for example: 4\n"),
-                "cyan"))
-            print(
-                colored(
-                    ("Maximum 4 people per room.\n"), "cyan"
-                )
-            )
+                ("Enter the amount as a digit, for example: 4\n"), "cyan"))
+            print(colored(("Maximum 4 people per room.\n"), "cyan"))
             guest_number = int(input("Amount guests staying: \n"))
             # Validates user input for guest quantity
             if guest_number > 4:
@@ -296,18 +271,14 @@ def guest_quantity():
                 print(colored(("Invalid number input.\n"), "red"))
                 continue
             else:
-                print(colored((f"You have entered {guest_number} guests.\n"), "cyan"))
+                print(colored(
+                    (f"You have entered {guest_number} guests.\n"), "cyan"))
                 print(colored(("Updating your reservation...\n"), "cyan"))
                 break
-
         except ValueError:
-            print(
-                colored(
-                    ("Invalid input. Please only use numbers.\n"), "red"
-                )
-            )
+            print(colored(
+                ("Invalid input. Please only use numbers.\n"), "red"))
             continue
-
     return guest_number
 
 
@@ -482,7 +453,7 @@ def calculate_total_price(room_choice, check_out_date, check_in_date):
     elif room_choice == 2:
         selected_room = "Deluxe Twin"
     elif room_choice == 3:
-        selected_room = "Standard Double"      
+        selected_room = "Standard Double"
     elif room_choice == 4:
         selected_room = "Standard Twin"
 
