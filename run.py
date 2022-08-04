@@ -220,10 +220,8 @@ def guest_quantity():
             # Validates user input for guest quantity
             if guest_number > 4:
                 print(colored(("Only 4 persons maximum per room.\n"), "red"))
-                continue
             elif guest_number <= 0:
                 print(colored(("Invalid number input.\n"), "red"))
-                continue
             else:
                 print(colored(
                     (f"You have entered {guest_number} guests.\n"), "cyan"))
@@ -232,7 +230,6 @@ def guest_quantity():
         except ValueError:
             print(colored(
                 ("Invalid input. Please only use numbers.\n"), "red"))
-            continue
     return guest_number
 
 
@@ -306,13 +303,10 @@ def room_type():
                 break
             elif room_choice >= 5:
                 print(colored(("Invalid choice input.\n"), "red"))
-                continue
             else:
                 print(colored(("Invalid input.\n"), "red"))
-                continue
         except ValueError:
             print(colored(("Please use only numbers.\n"), "red"))
-            continue
     if selected_room:
         price = PRICES[selected_room]
     print(colored((f"{selected_room} option selected.\n"), "cyan"))
@@ -342,18 +336,15 @@ def customer_check_in_date():
             # Validates user input for check-in date
             if check_in_date <= present_date:
                 print(colored(
-                    ("Invalid check-in date. Please try again.\n"), "red"))
-                continue
+                    ("Check-in date cannot precede current date.\n"), "red"))
             elif check_in_date >= max_check_out_date:
                 print(colored(
-                    ("Invalid check-in date. Please try again.\n"), "red"))
-                continue
+                    ("Check-in date must be within current year.\n"), "red"))
             else:
                 break
         except ValueError:
             print(colored(
-                ("Invalid check-in date. Please try again.\n"), "red"))
-            continue
+                ("Invalid input. Please use date format.\n"), "red"))
 
     return check_in_date
 
