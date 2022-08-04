@@ -131,11 +131,6 @@ def room_info():
 
     exit_room_info = input("Press any key to return to main menu.")
 
-    if exit_room_info:
-        main()
-    else:
-        main()
-
 
 def contact_details():
     """
@@ -144,11 +139,6 @@ def contact_details():
     print(colored((CONTACT), "cyan"))
 
     exit_contact_details = input("Press any key to return to main menu.")
-
-    if exit_contact_details:
-        main()
-    else:
-        main()
 
 
 def full_name():
