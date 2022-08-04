@@ -129,7 +129,7 @@ def room_info():
     print(colored((DELUXE_TWIN), "cyan"))
     print(colored((DELUXE_DOUBLE), "cyan"))
 
-    exit_room_info = input("Press any key to return to main menu.")
+    input("Press any key to return to main menu.")
 
 
 def contact_details():
@@ -138,7 +138,7 @@ def contact_details():
     """
     print(colored((CONTACT), "cyan"))
 
-    exit_contact_details = input("Press any key to return to main menu.")
+    input("Press any key to return to main menu.")
 
 
 def full_name():
@@ -193,17 +193,14 @@ def customer_age():
             if age <= 18:
                 print(colored(
                     ("You must be over 18 to make a reservation.\n"), "red"))
-                continue
             elif age >= 101:
                 print(colored(("Invalid age input.\n"), "red"))
-                continue
             else:
                 print(colored((f"You are {age} years old.\n"), "cyan"))
                 print(colored(("Updating your reservation...\n"), "cyan"))
                 break
         except ValueError:
             print(colored(("Invalid age input. Use numbers only.\n"), "red"))
-            continue
 
     return age
 
