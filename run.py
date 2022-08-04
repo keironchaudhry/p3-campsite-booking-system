@@ -369,18 +369,15 @@ def customer_check_out_date(check_in_date):
             # Validation for check-out date input
             if check_out_date <= check_in_date:
                 print(colored(
-                    ("Invalid check-out date. Please try again.\n"), "red"))
-                continue
+                    ("Check-out date cannot precede check-in date.\n"), "red"))
             elif check_out_date >= max_check_out_date:
                 print(colored(
-                    ("Invalid check-out date. Please try again.\n"), "red"))
-                continue
+                    ("Check-out date must be within current year.\n"), "red"))
             else:
                 break
         except ValueError:
             print(colored(
-                ("Invalid check-out date. Please try again.\n"), "red"))
-            continue
+                ("Invalid input. Please use date format.\n"), "red"))
 
     return check_out_date
 
@@ -466,8 +463,6 @@ def confirm_reservation(
     print(colored(
         ("Application now closing.\n"), "blue"))
 
-    sys.exit()
-
 
 def program():
     """
@@ -505,11 +500,12 @@ def main():
             print(colored((WELCOME_MESSAGE), "cyan"))
             user_menu_choice = int(input("Enter here your input: \n"))
             if user_menu_choice == 1:
-                print(program())
+                program()
+                sys.exit()
             elif user_menu_choice == 2:
-                print(room_info())
+                room_info()
             elif user_menu_choice == 3:
-                print(contact_details())
+                contact_details()
             elif user_menu_choice == 4:
                 print(
                     colored(
@@ -519,14 +515,9 @@ def main():
                 )
                 sys.exit()
             elif user_menu_choice >= 5:
-                print(colored(("Invalid key. Please try again.\n"), "red"))
-                main()
-            elif user_menu_choice >= 0:
-                print(colored(("Invalid key. Please try again.\n"), "red"))
-                main()
+                print(colored(("Invalid choice. Please try again.\n"), "red"))
         except ValueError:
-            print(colored(("Invalid key. Please try again.\n"), "red"))
-            continue
+            print(colored(("Please enter a number.\n"), "red"))
 
 
 if __name__ == "__main__":
