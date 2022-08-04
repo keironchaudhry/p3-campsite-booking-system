@@ -119,39 +119,6 @@ max_date = "01/01/2023"
 max_check_out_date = datetime.datetime.strptime(max_date, "%d/%m/%Y").date()
 
 
-def main():
-    """
-    The landing page to welcome the user upon initiation of the application
-    """
-    while True:
-        try:
-            print(colored((WELCOME_MESSAGE), "cyan"))
-            user_menu_choice = int(input("Enter here your input: \n"))
-            if user_menu_choice == 1:
-                print(program())
-            elif user_menu_choice == 2:
-                print(room_info())
-            elif user_menu_choice == 3:
-                print(contact_details())
-            elif user_menu_choice == 4:
-                print(
-                    colored(
-                        ("Application now closing. Thank you."),
-                        "blue",
-                    )
-                )
-                sys.exit()
-            elif user_menu_choice >= 5:
-                print(colored(("Invalid key. Please try again.\n"), "red"))
-                main()
-            elif user_menu_choice >= 0:
-                print(colored(("Invalid key. Please try again.\n"), "red"))
-                main()
-        except ValueError:
-            print(colored(("Invalid key. Please try again.\n"), "red"))
-            continue
-
-
 def room_info():
     """
     Displays brief information about the amenities available to the client
@@ -549,6 +516,40 @@ def program():
         num_days,
         total_price,
     )
+
+
+def main():
+    """
+    The landing page to welcome the user upon initiation of the application
+    """
+    while True:
+        try:
+            print(colored((WELCOME_MESSAGE), "cyan"))
+            user_menu_choice = int(input("Enter here your input: \n"))
+            if user_menu_choice == 1:
+                print(program())
+            elif user_menu_choice == 2:
+                print(room_info())
+            elif user_menu_choice == 3:
+                print(contact_details())
+            elif user_menu_choice == 4:
+                print(
+                    colored(
+                        ("Application now closing. Thank you."),
+                        "blue",
+                    )
+                )
+                sys.exit()
+            elif user_menu_choice >= 5:
+                print(colored(("Invalid key. Please try again.\n"), "red"))
+                main()
+            elif user_menu_choice >= 0:
+                print(colored(("Invalid key. Please try again.\n"), "red"))
+                main()
+        except ValueError:
+            print(colored(("Invalid key. Please try again.\n"), "red"))
+            continue
+
 
 if __name__ == "__main__":
     main()
